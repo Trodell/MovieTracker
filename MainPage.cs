@@ -19,7 +19,7 @@ namespace MovieTracker
         {
             InitializeComponent();
         }
-        
+        //test
         private async void MainPage_Load(object sender, EventArgs e)
         {
             var options = new RestClientOptions("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1");
