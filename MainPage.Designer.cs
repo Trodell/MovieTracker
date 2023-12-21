@@ -37,7 +37,7 @@
             // dataGridViewMovies
             // 
             this.dataGridViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMovies.Location = new System.Drawing.Point(141, 241);
+            this.dataGridViewMovies.Location = new System.Drawing.Point(157, 232);
             this.dataGridViewMovies.Name = "dataGridViewMovies";
             this.dataGridViewMovies.Size = new System.Drawing.Size(506, 150);
             this.dataGridViewMovies.TabIndex = 1;
@@ -48,6 +48,7 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(100, 20);
             this.txtTitle.TabIndex = 2;
+            this.txtTitle.TextChanged += new System.EventHandler(this.txtTitle_TextChanged);
             // 
             // lblTitle
             // 

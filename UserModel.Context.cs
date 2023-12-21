@@ -13,10 +13,10 @@ namespace MovieTracker
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MoviedbEntities : DbContext
+    public partial class MoviedbEntities5 : DbContext
     {
-        public MoviedbEntities()
-            : base("name=MoviedbEntities")
+        public MoviedbEntities5()
+            : base("name=MoviedbEntities5")
         {
         }
     
@@ -25,6 +25,7 @@ namespace MovieTracker
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Movie> Movies { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

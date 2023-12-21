@@ -12,16 +12,13 @@ namespace MovieTracker
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Movie
     {
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-        public decimal Age { get; set; }
-        public string Email { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
-        public decimal ID { get; set; }
+        public string Title { get; set; }
+        public string Release_Date { get; set; }
+        public string Overview { get; set; }
     
-        public virtual Movie Movie { get; set; }
+        public virtual User User { get; set; }
     }
 }

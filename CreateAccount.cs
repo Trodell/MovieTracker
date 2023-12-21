@@ -13,6 +13,7 @@ namespace MovieTracker
 {
     public partial class CreateAccount : Form
     {
+        UserRepository userRepository;
         public CreateAccount()
         {
             InitializeComponent();
@@ -20,7 +21,26 @@ namespace MovieTracker
 
         private void CreateAccount_Load(object sender, EventArgs e)
         {
+            userRepository = new UserRepository();
+        }
 
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            if(txtFName != null && txtLName != null && txtAge != null && txtEmail != null && txtCreateUsername != null && txtCreatePassword!=null)
+            {
+                var newUser = new User();
+                newUser.First_Name = txtFName.Text;
+                newUser.Last_Name = txtLName.Text;
+                newUser.Age = decimal.Parse(txtAge.Text);
+                newUser.Email = txtEmail.Text;
+                newUser.Username = txtCreateUsername.Text;
+                newUser.Password = txtCreatePassword.Text;
+                userRepository.CreateUser(newUser);
+                MessageBox.Show("Account Created!");
+                this.Close();
+                MainPage mainPage = new MainPage();
+                mainPage.Show();
+            }
         }
     }
 }

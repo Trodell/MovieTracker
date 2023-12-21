@@ -39,7 +39,7 @@
             this.lblCreateUsername = new System.Windows.Forms.Label();
             this.lblCreatePassword = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAge = new System.Windows.Forms.TextBox();
             this.lblAge = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -62,21 +62,21 @@
             this.txtEmail.Location = new System.Drawing.Point(394, 220);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail.TabIndex = 2;
+            this.txtEmail.TabIndex = 3;
             // 
             // txtCreateUsername
             // 
             this.txtCreateUsername.Location = new System.Drawing.Point(394, 273);
             this.txtCreateUsername.Name = "txtCreateUsername";
             this.txtCreateUsername.Size = new System.Drawing.Size(100, 20);
-            this.txtCreateUsername.TabIndex = 3;
+            this.txtCreateUsername.TabIndex = 4;
             // 
             // txtCreatePassword
             // 
             this.txtCreatePassword.Location = new System.Drawing.Point(394, 321);
             this.txtCreatePassword.Name = "txtCreatePassword";
             this.txtCreatePassword.Size = new System.Drawing.Size(100, 20);
-            this.txtCreatePassword.TabIndex = 4;
+            this.txtCreatePassword.TabIndex = 5;
             // 
             // lblFName
             // 
@@ -125,19 +125,20 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(331, 377);
+            this.btnCreate.Location = new System.Drawing.Point(331, 368);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(80, 29);
-            this.btnCreate.TabIndex = 10;
+            this.btnCreate.TabIndex = 6;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // textBox1
+            // txtAge
             // 
-            this.textBox1.Location = new System.Drawing.Point(394, 166);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(33, 20);
-            this.textBox1.TabIndex = 11;
+            this.txtAge.Location = new System.Drawing.Point(394, 166);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Size = new System.Drawing.Size(33, 20);
+            this.txtAge.TabIndex = 2;
             // 
             // lblAge
             // 
@@ -154,7 +155,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblAge);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtAge);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.lblCreatePassword);
             this.Controls.Add(this.lblCreateUsername);
@@ -187,7 +188,7 @@
         private System.Windows.Forms.Label lblCreateUsername;
         private System.Windows.Forms.Label lblCreatePassword;
         private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAge;
         private System.Windows.Forms.Label lblAge;
     }
 }

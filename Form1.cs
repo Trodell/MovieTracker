@@ -12,6 +12,8 @@ namespace MovieTracker
 {
     public partial class Login : Form
     {
+        
+        UserRepository userRepository;
         public Login()
         {
             InitializeComponent();
@@ -19,7 +21,7 @@ namespace MovieTracker
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            userRepository = new UserRepository();
         }
 
         private void btnCreateAcc_Click(object sender, EventArgs e)
@@ -31,9 +33,20 @@ namespace MovieTracker
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            MainPage mainPage = new MainPage();
-            mainPage.ShowDialog();
-            this.Close();
+            var username = txtUsername.Text;
+            var password = txtPassword.Text;
+            var user = userRepository.FindUser(username);
+            if (user != null)
+            {
+                
+                MainPage mainPage = new MainPage();
+                mainPage.ShowDialog();
+                this.Close();
+            }
+            else
+                MessageBox.Show("That user doesn't exist");
+            
+            
         }
     }
 }

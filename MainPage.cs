@@ -39,5 +39,10 @@ namespace MovieTracker
             dataGridViewMovies.Columns[10].Visible = false; // vote average
             dataGridViewMovies.Columns[11].Visible = false; // vote count
         }
+
+        private void txtTitle_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
