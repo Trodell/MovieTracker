@@ -10,11 +10,13 @@ using System.Windows.Forms;
 using System.Net.Http;
 using RestSharp;
 using Newtonsoft.Json;
+using static System.Net.WebRequestMethods;
 
 namespace MovieTracker
 {
     public partial class MainPage : Form
     {
+        private HttpClient client = new HttpClient();
         public MainPage()
         {
             InitializeComponent();
@@ -40,8 +42,34 @@ namespace MovieTracker
             dataGridViewMovies.Columns[11].Visible = false; // vote count
         }
 
-        private void txtTitle_TextChanged(object sender, EventArgs e)
+        private async void txtTitle_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            string userInput = txtTitle.Text;
+            try
+            {
+                string apiUrl = $"https://api.themoviedb.org/3/search/movie?query={userInput}&api_key=22ff9d8c655fb5bde0c5427a33701766";
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    // Process the response content (responseContent) here
+                    // Update your application's UI or handle the data accordingly
+                    MessageBox.Show(responseContent); // For demonstration, displaying response content in a message box
+                }
+                else
+                {
+                    MessageBox.Show($"Failed to fetch data. Status code: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
 
         }
     }
