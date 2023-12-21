@@ -35,7 +35,7 @@ namespace MovieTracker
         {
             var username = txtUsername.Text;
             var password = txtPassword.Text;
-            var user = userRepository.FindUser(username);
+            var user = userRepository.FindUser(username,password);
             if (user != null)
             {
                 

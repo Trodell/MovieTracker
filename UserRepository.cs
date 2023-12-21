@@ -4,13 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MovieTracker
 {
     interface CRUD
     {
         void CreateUser(User user);
-        User FindUser(string username);
+        User FindUser(string username, string password);
     }
     class UserRepository : CRUD
     {
@@ -24,10 +25,17 @@ namespace MovieTracker
             entities.Users.Add(newUser);
             entities.SaveChanges();
         }
-        public User FindUser(string username)
+        public User FindUser(string username, string password)
         {
-            //return entities.Users.First(x=>x.Username==username.ToString());
-            return entities.Users.Find(username.ToString());
+            try
+            {
+                return entities.Users.First(x => x.Username == username && x.Password == password);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            //return entities.Users.Find(username.ToString());
         }
     }
 }
