@@ -31,17 +31,19 @@
             this.dataGridViewMovies = new System.Windows.Forms.DataGridView();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovies)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewMovies
             // 
             this.dataGridViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMovies.Location = new System.Drawing.Point(157, 232);
+            this.dataGridViewMovies.Location = new System.Drawing.Point(89, 246);
             this.dataGridViewMovies.Name = "dataGridViewMovies";
             this.dataGridViewMovies.Size = new System.Drawing.Size(506, 150);
             this.dataGridViewMovies.TabIndex = 1;
+            this.dataGridViewMovies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMovies_CellContentClick);
             // 
             // txtTitle
             // 
@@ -60,22 +62,33 @@
             this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "Search Title:";
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.Location = new System.Drawing.Point(351, 82);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSearch.Location = new System.Drawing.Point(351, 82);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(657, 295);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 5;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.dataGridViewMovies);
@@ -92,6 +105,7 @@
         private System.Windows.Forms.DataGridView dataGridViewMovies;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

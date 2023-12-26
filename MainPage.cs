@@ -16,6 +16,7 @@ namespace MovieTracker
 {
     public partial class MainPage : Form
     {
+        UserRepository userRepository;
         private HttpClient client = new HttpClient();
         public MainPage()
         {
@@ -24,6 +25,7 @@ namespace MovieTracker
         //test
         private async void MainPage_Load(object sender, EventArgs e)
         {
+            userRepository = new UserRepository();
             var options = new RestClientOptions("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1");
             var client = new RestClient(options);
             var request = new RestRequest("");
@@ -71,6 +73,22 @@ namespace MovieTracker
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
 
+        }
+
+        private void dataGridViewMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var newMovie = new Movie();
+            newMovie.Title = dataGridViewMovies.CurrentRow.Cells[4].ToString();
+            newMovie.Overview = dataGridViewMovies.CurrentRow.Cells[5].ToString();
+            newMovie.Release_Date = dataGridViewMovies.CurrentRow.Cells[8].ToString();
+
+            userRepository.AddMovie(newMovie);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace MovieTracker
     {
         void CreateUser(User user);
         User FindUser(string username, string password);
+        void AddMovie (Movie newMovie);
     }
     class UserRepository : CRUD
     {
@@ -36,6 +37,11 @@ namespace MovieTracker
                 return null;
             }
             //return entities.Users.Find(username.ToString());
+        }
+        public void AddMovie(Movie newMovie)
+        {
+            entities.Movies.Add(newMovie);
+            entities.SaveChanges();
         }
     }
 }
