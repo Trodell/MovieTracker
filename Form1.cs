@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.ModelBinding;
 using System.Windows.Forms;
 
 namespace MovieTracker
@@ -30,7 +31,7 @@ namespace MovieTracker
             createAccount.ShowDialog();
             this.Close();
         }
-
+        
         private void btnLogin_Click(object sender, EventArgs e)
         {
             var username = txtUsername.Text;
@@ -46,7 +47,7 @@ namespace MovieTracker
             else
                 MessageBox.Show("That user doesn't exist");
             
-            
+
         }
     }
 }

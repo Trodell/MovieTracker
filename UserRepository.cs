@@ -13,6 +13,9 @@ namespace MovieTracker
         void CreateUser(User user);
         User FindUser(string username, string password);
         void AddMovie (Movie newMovie);
+        decimal GetMaxUserID();
+        decimal GetMaxMovieID();
+        User FindUserID(decimal ID);
     }
     class UserRepository : CRUD
     {
@@ -30,7 +33,8 @@ namespace MovieTracker
         {
             try
             {
-                return entities.Users.First(x => x.Username == username && x.Password == password);
+                return entities.Users.First(x => x.Username == username && x.Password == password );
+                
             }
             catch (Exception ex)
             {
@@ -40,8 +44,24 @@ namespace MovieTracker
         }
          public void AddMovie(Movie newMovie)
         {
+
             entities.Movies.Add(newMovie);
             entities.SaveChanges();
         }
+        public decimal GetMaxUserID()
+        {
+            
+            return entities.Users.Max(x => x.UserID);
+            
+        }
+        public decimal GetMaxMovieID()
+        {
+            return entities.Movies.Max(x => x.MovieID);
+        }
+        public User FindUserID(decimal ID)
+        {
+            return entities.Users.Find(ID);
+        }
+
     }
 }
