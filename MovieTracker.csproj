@@ -132,6 +132,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="UserMovy.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserRepository.cs" />
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>

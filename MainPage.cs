@@ -84,9 +84,13 @@ namespace MovieTracker
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var newMovie = new Movie();
-            newMovie.Title = dataGridViewMovies.CurrentRow.Cells[4].ToString();
-            newMovie.Overview = dataGridViewMovies.CurrentRow.Cells[5].ToString();
-            newMovie.Release_Date = dataGridViewMovies.CurrentRow.Cells[8].ToString();
+            
+            //newMovie.Title = "Test Title";
+            newMovie.Title = dataGridViewMovies.CurrentRow.Cells[4].Value.ToString();
+            newMovie.Overview = "Test Overview";
+            //newMovie.Overview = dataGridViewMovies.CurrentRow.Cells[5].Value.ToString();
+            //newMovie.Release_Date = "Test date";
+            newMovie.Release_Date = dataGridViewMovies.CurrentRow.Cells[8].Value.ToString();
 
             userRepository.AddMovie(newMovie);
         }

@@ -14,11 +14,18 @@ namespace MovieTracker
     
     public partial class Movie
     {
-        public string Username { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Movie()
+        {
+            this.UserMovies = new HashSet<UserMovy>();
+        }
+    
         public string Title { get; set; }
         public string Release_Date { get; set; }
         public string Overview { get; set; }
+        public decimal MovieID { get; set; }
     
-        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserMovy> UserMovies { get; set; }
     }
 }

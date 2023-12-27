@@ -4,10 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="49c0bf8888d74729ad7544061b367f55" Name="Diagram1">
-        <EntityTypeShape EntityType="MoviedbModel.Movie" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MoviedbModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="MoviedbModel.FK_Movie_User" ManuallyRouted="false" />
+      <Diagram DiagramId="382308b1a9c44e488141cac6e5e2ed04" Name="Diagram1">
+        <EntityTypeShape EntityType="MoviesdbModel.Movie" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesdbModel.User" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesdbModel.UserMovy" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="MoviesdbModel.FK_UserMovies_Movie" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

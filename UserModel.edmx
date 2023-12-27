@@ -4,19 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MoviedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MoviesdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Movie">
           <Key>
-            <PropertyRef Name="Username" />
+            <PropertyRef Name="MovieID" />
           </Key>
-          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Release Date" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Overview" Type="nvarchar" MaxLength="50" />
+          <Property Name="Overview" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MovieID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="Username" />
+            <PropertyRef Name="UserID" />
           </Key>
           <Property Name="First Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Last Name" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -24,46 +24,62 @@
           <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Movie_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Movie" Type="Self.Movie" Multiplicity="0..1" />
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Moviesdb.dbo.UserMovies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserMovies">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MovieID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UserMovies_Movie">
+          <End Role="Movie" Type="Self.Movie" Multiplicity="1" />
+          <End Role="UserMovies" Type="Self.UserMovies" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Username" />
+            <Principal Role="Movie">
+              <PropertyRef Name="MovieID" />
             </Principal>
-            <Dependent Role="Movie">
-              <PropertyRef Name="Username" />
+            <Dependent Role="UserMovies">
+              <PropertyRef Name="MovieID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MoviedbModelStoreContainer">
+        <EntityContainer Name="MoviesdbModelStoreContainer">
           <EntitySet Name="Movie" EntityType="Self.Movie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Movie_User" Association="Self.FK_Movie_User">
-            <End Role="User" EntitySet="User" />
+          <EntitySet Name="UserMovies" EntityType="Self.UserMovies" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserMovies].[UserID] AS [UserID], 
+    [UserMovies].[MovieID] AS [MovieID]
+    FROM [dbo].[UserMovies] AS [UserMovies]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_UserMovies_Movie" Association="Self.FK_UserMovies_Movie">
             <End Role="Movie" EntitySet="Movie" />
+            <End Role="UserMovies" EntitySet="UserMovies" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MoviedbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MoviesdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Movie">
           <Key>
-            <PropertyRef Name="Username" />
+            <PropertyRef Name="MovieID" />
           </Key>
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Release_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Overview" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Movie_User" FromRole="Movie" ToRole="User" />
+          <Property Name="Overview" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MovieID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="UserMovies" Relationship="Self.FK_UserMovies_Movie" FromRole="Movie" ToRole="UserMovies" />
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="Username" />
+            <PropertyRef Name="UserID" />
           </Key>
           <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -71,27 +87,36 @@
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <NavigationProperty Name="Movie" Relationship="Self.FK_Movie_User" FromRole="User" ToRole="Movie" />
+          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Movie_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Movie" Type="Self.Movie" Multiplicity="0..1" />
+        <EntityType Name="UserMovy">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MovieID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Movie" Relationship="Self.FK_UserMovies_Movie" FromRole="UserMovies" ToRole="Movie" />
+        </EntityType>
+        <Association Name="FK_UserMovies_Movie">
+          <End Role="Movie" Type="Self.Movie" Multiplicity="1" />
+          <End Role="UserMovies" Type="Self.UserMovy" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Username" />
+            <Principal Role="Movie">
+              <PropertyRef Name="MovieID" />
             </Principal>
-            <Dependent Role="Movie">
-              <PropertyRef Name="Username" />
+            <Dependent Role="UserMovies">
+              <PropertyRef Name="MovieID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MoviedbEntities5" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MoviesdbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Movies" EntityType="Self.Movie" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK_Movie_User" Association="Self.FK_Movie_User">
-            <End Role="User" EntitySet="Users" />
+          <EntitySet Name="UserMovies" EntityType="Self.UserMovy" />
+          <AssociationSet Name="FK_UserMovies_Movie" Association="Self.FK_UserMovies_Movie">
             <End Role="Movie" EntitySet="Movies" />
+            <End Role="UserMovies" EntitySet="UserMovies" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -99,19 +124,19 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MoviedbModelStoreContainer" CdmEntityContainer="MoviedbEntities5">
+        <EntityContainerMapping StorageEntityContainer="MoviesdbModelStoreContainer" CdmEntityContainer="MoviesdbEntities">
           <EntitySetMapping Name="Movies">
-            <EntityTypeMapping TypeName="MoviedbModel.Movie">
+            <EntityTypeMapping TypeName="MoviesdbModel.Movie">
               <MappingFragment StoreEntitySet="Movie">
-                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Release_Date" ColumnName="Release Date" />
                 <ScalarProperty Name="Overview" ColumnName="Overview" />
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="MoviedbModel.User">
+            <EntityTypeMapping TypeName="MoviesdbModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="First_Name" ColumnName="First Name" />
                 <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
@@ -119,7 +144,15 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMovies">
+            <EntityTypeMapping TypeName="MoviesdbModel.UserMovy">
+              <MappingFragment StoreEntitySet="UserMovies">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

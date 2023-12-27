@@ -16,10 +16,10 @@ namespace MovieTracker
     }
     class UserRepository : CRUD
     {
-        MoviedbEntities5 entities;
+        MoviesdbEntities entities;
         public UserRepository()
         {
-            entities = new MoviedbEntities5();
+            entities = new MoviesdbEntities();
         }
         public void CreateUser(User newUser)
         {
@@ -38,7 +38,7 @@ namespace MovieTracker
             }
             //return entities.Users.Find(username.ToString());
         }
-        public void AddMovie(Movie newMovie)
+         public void AddMovie(Movie newMovie)
         {
             entities.Movies.Add(newMovie);
             entities.SaveChanges();

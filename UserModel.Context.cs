@@ -13,10 +13,10 @@ namespace MovieTracker
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MoviedbEntities5 : DbContext
+    public partial class MoviesdbEntities : DbContext
     {
-        public MoviedbEntities5()
-            : base("name=MoviedbEntities5")
+        public MoviesdbEntities()
+            : base("name=MoviesdbEntities")
         {
         }
     
@@ -27,5 +27,6 @@ namespace MovieTracker
     
         public virtual DbSet<Movie> Movies { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserMovy> UserMovies { get; set; }
     }
 }
