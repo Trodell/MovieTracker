@@ -132,7 +132,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="UserMovy.cs">
+    <Compile Include="UserMovies.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserRepository.cs" />

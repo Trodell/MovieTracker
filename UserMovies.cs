@@ -12,7 +12,7 @@ namespace MovieTracker
     using System;
     using System.Collections.Generic;
     
-    public partial class UserMovy
+    public partial class UserMovies
     {
         public decimal UserID { get; set; }
         public decimal MovieID { get; set; }

@@ -17,7 +17,7 @@ namespace MovieTracker
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Movie()
         {
-            this.UserMovies = new HashSet<UserMovy>();
+            this.UserMovies = new HashSet<UserMovies>();
         }
     
         public string Title { get; set; }
@@ -26,6 +26,6 @@ namespace MovieTracker
         public decimal MovieID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMovy> UserMovies { get; set; }
+        public virtual ICollection<UserMovies> UserMovies { get; set; }
     }
 }

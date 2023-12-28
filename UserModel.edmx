@@ -89,7 +89,7 @@ warning 6002: The table/view 'Moviesdb.dbo.UserMovies' does not have a primary k
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
-        <EntityType Name="UserMovy">
+        <EntityType Name="UserMovies">
           <Key>
             <PropertyRef Name="UserID" />
             <PropertyRef Name="MovieID" />
@@ -100,7 +100,7 @@ warning 6002: The table/view 'Moviesdb.dbo.UserMovies' does not have a primary k
         </EntityType>
         <Association Name="FK_UserMovies_Movie">
           <End Role="Movie" Type="Self.Movie" Multiplicity="1" />
-          <End Role="UserMovies" Type="Self.UserMovy" Multiplicity="*" />
+          <End Role="UserMovies" Type="MoviesdbModel.UserMovies" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Movie">
               <PropertyRef Name="MovieID" />
@@ -113,10 +113,10 @@ warning 6002: The table/view 'Moviesdb.dbo.UserMovies' does not have a primary k
         <EntityContainer Name="MoviesdbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Movies" EntityType="Self.Movie" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="UserMovies" EntityType="Self.UserMovy" />
+          <EntitySet Name="UserMovies1" EntityType="MoviesdbModel.UserMovies" />
           <AssociationSet Name="FK_UserMovies_Movie" Association="Self.FK_UserMovies_Movie">
             <End Role="Movie" EntitySet="Movies" />
-            <End Role="UserMovies" EntitySet="UserMovies" />
+            <End Role="UserMovies" EntitySet="UserMovies1" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -148,8 +148,8 @@ warning 6002: The table/view 'Moviesdb.dbo.UserMovies' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserMovies">
-            <EntityTypeMapping TypeName="MoviesdbModel.UserMovy">
+          <EntitySetMapping Name="UserMovies1">
+            <EntityTypeMapping TypeName="MoviesdbModel.UserMovies">
               <MappingFragment StoreEntitySet="UserMovies">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="MovieID" ColumnName="MovieID" />

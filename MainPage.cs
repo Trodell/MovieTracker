@@ -89,10 +89,12 @@ namespace MovieTracker
             newMovie.Title = dataGridViewMovies.CurrentRow.Cells[4].Value.ToString();
             newMovie.Overview = dataGridViewMovies.CurrentRow.Cells[5].Value.ToString();
             newMovie.Release_Date = dataGridViewMovies.CurrentRow.Cells[8].Value.ToString();
-            var newUserMovie = new UserMovy();
+            var newUserMovie = new UserMovies();
             newUserMovie.MovieID = newMovie.MovieID;
-            
+            newUserMovie.UserID = 2;
+
             userRepository.AddMovie(newMovie);
+            userRepository.AddUserMovies(newUserMovie);
         }
     }
 }

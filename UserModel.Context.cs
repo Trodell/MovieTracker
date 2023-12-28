@@ -27,6 +27,6 @@ namespace MovieTracker
     
         public virtual DbSet<Movie> Movies { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UserMovy> UserMovies { get; set; }
+        public virtual DbSet<UserMovies> UserMovies1 { get; set; }
     }
 }
