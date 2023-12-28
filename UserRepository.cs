@@ -45,6 +45,7 @@ namespace MovieTracker
         }
         public void AddUserMovies(UserMovies userMovies)
         {
+
             entities.UserMovies1.Add(userMovies);
             entities.SaveChanges();
         }

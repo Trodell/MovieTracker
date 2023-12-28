@@ -91,7 +91,7 @@ namespace MovieTracker
             newMovie.Release_Date = dataGridViewMovies.CurrentRow.Cells[8].Value.ToString();
             var newUserMovie = new UserMovies();
             newUserMovie.MovieID = newMovie.MovieID;
-            newUserMovie.UserID = 2;
+            newUserMovie.UserID = 3;
 
             userRepository.AddMovie(newMovie);
             userRepository.AddUserMovies(newUserMovie);
