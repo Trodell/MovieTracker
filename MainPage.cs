@@ -83,7 +83,7 @@ namespace MovieTracker
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            
             var newMovie = new Movie();
             newMovie.MovieID = userRepository.GetMaxMovieID()+1;
             newMovie.Title = dataGridViewMovies.CurrentRow.Cells[4].Value.ToString();
@@ -91,7 +91,8 @@ namespace MovieTracker
             newMovie.Release_Date = dataGridViewMovies.CurrentRow.Cells[8].Value.ToString();
             var newUserMovie = new UserMovies();
             newUserMovie.MovieID = newMovie.MovieID;
-            newUserMovie.UserID = 3;
+            var userToFind = userRepository.FindUser(Login.SetValueForText1.ToString(),Login.SetValueForText2.ToString());
+            newUserMovie.UserID = userToFind.UserID;
 
             userRepository.AddMovie(newMovie);
             userRepository.AddUserMovies(newUserMovie);

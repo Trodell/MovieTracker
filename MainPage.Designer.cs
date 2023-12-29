@@ -39,15 +39,15 @@
             // dataGridViewMovies
             // 
             this.dataGridViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMovies.Location = new System.Drawing.Point(89, 246);
+            this.dataGridViewMovies.Location = new System.Drawing.Point(89, 192);
             this.dataGridViewMovies.Name = "dataGridViewMovies";
-            this.dataGridViewMovies.Size = new System.Drawing.Size(506, 150);
+            this.dataGridViewMovies.Size = new System.Drawing.Size(506, 204);
             this.dataGridViewMovies.TabIndex = 1;
             this.dataGridViewMovies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMovies_CellContentClick);
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(399, 25);
+            this.txtTitle.Location = new System.Drawing.Point(389, 112);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(100, 20);
             this.txtTitle.TabIndex = 2;
@@ -56,7 +56,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(299, 28);
+            this.lblTitle.Location = new System.Drawing.Point(262, 115);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(67, 13);
             this.lblTitle.TabIndex = 3;
@@ -64,7 +64,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(351, 82);
+            this.btnSearch.Location = new System.Drawing.Point(317, 151);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 4;
@@ -74,7 +74,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(657, 295);
+            this.btnAdd.Location = new System.Drawing.Point(623, 283);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 5;

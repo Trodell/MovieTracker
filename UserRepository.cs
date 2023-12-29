@@ -15,7 +15,7 @@ namespace MovieTracker
         void AddMovie (Movie newMovie);
         decimal GetMaxUserID();
         decimal GetMaxMovieID();
-        User FindUserID(decimal ID);
+        User FindUserID(string username, string password);
         void AddUserMovies(UserMovies userMovies);
     }
     class UserRepository : CRUD
@@ -65,9 +65,9 @@ namespace MovieTracker
         {
             return entities.Movies.Max(x => x.MovieID);
         }
-        public User FindUserID(decimal ID)
+        public User FindUserID(string username, string password)
         {
-            return entities.Users.Find(ID);
+            return entities.Users.Find(username, password);
         }
 
     }

@@ -13,7 +13,8 @@ namespace MovieTracker
 {
     public partial class Login : Form
     {
-        
+        public static string SetValueForText1 = "";
+        public static string SetValueForText2 = "";
         UserRepository userRepository;
         public Login()
         {
@@ -34,6 +35,8 @@ namespace MovieTracker
         
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            SetValueForText1 = txtUsername.Text;
+            SetValueForText2 = txtPassword.Text;
             var username = txtUsername.Text;
             var password = txtPassword.Text;
             var user = userRepository.FindUser(username,password);
@@ -49,5 +52,6 @@ namespace MovieTracker
             
 
         }
+
     }
 }
