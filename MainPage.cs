@@ -11,6 +11,7 @@ using System.Net.Http;
 using RestSharp;
 using Newtonsoft.Json;
 using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace MovieTracker
 {
@@ -89,13 +90,22 @@ namespace MovieTracker
             newMovie.Title = dataGridViewMovies.CurrentRow.Cells[4].Value.ToString();
             newMovie.Overview = dataGridViewMovies.CurrentRow.Cells[5].Value.ToString();
             newMovie.Release_Date = dataGridViewMovies.CurrentRow.Cells[8].Value.ToString();
-            var newUserMovie = new UserMovies();
-            newUserMovie.MovieID = newMovie.MovieID;
-            var userToFind = userRepository.FindUser(Login.SetValueForText1.ToString(),Login.SetValueForText2.ToString());
-            newUserMovie.UserID = userToFind.UserID;
+            var movie = userRepository.GetAllMovies(newMovie.Title, newMovie.Release_Date);
+            if (movie != null) //needs to go by UserMovie table rather than Movie Table
+            {
+                MessageBox.Show("The movie already exists in your list");
+            }
+            else
+            {
+                var newUserMovie = new UserMovies();
+                newUserMovie.MovieID = newMovie.MovieID;
+                var userToFind = userRepository.FindUser(Login.SetValueForText1.ToString(), Login.SetValueForText2.ToString());
+                newUserMovie.UserID = userToFind.UserID;
 
-            userRepository.AddMovie(newMovie);
-            userRepository.AddUserMovies(newUserMovie);
+                userRepository.AddMovie(newMovie);
+                userRepository.AddUserMovies(newUserMovie);
+            }
+            
         }
 
         private void btnList_Click(object sender, EventArgs e)

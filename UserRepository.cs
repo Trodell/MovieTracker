@@ -17,6 +17,9 @@ namespace MovieTracker
         decimal GetMaxMovieID();
         void AddUserMovies(UserMovies userMovies);
         List<Movie> GetUserMovies(decimal userID);
+        void DeleteMovie(UserMovies movie);
+        UserMovies GetMovieID(decimal movieID);
+        Movie GetAllMovies(string movieTitle, string movieRelease);
     }
     class UserRepository : CRUD
     {
@@ -25,6 +28,17 @@ namespace MovieTracker
         {
             entities = new MoviesdbEntities();
 
+        }
+        public Movie GetAllMovies(string movieTitle, string movieRelease)
+        {
+            try
+            {
+                return entities.Movies.First(x => x.Title == movieTitle && x.Release_Date == movieRelease);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
         public void CreateUser(User newUser)
         {
@@ -81,6 +95,15 @@ namespace MovieTracker
                 }
             }
             return moviesForUser;
+        }
+        public void DeleteMovie(UserMovies movie)
+        {
+            entities.UserMovies1.Remove(movie);
+            entities.SaveChanges();
+        }
+        public UserMovies GetMovieID(decimal movieID)
+        {
+            return entities.UserMovies1.First(x => x.MovieID == movieID);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace MovieTracker
         {
             if(txtFName != null && txtLName != null && txtAge != null && txtEmail != null && txtCreateUsername != null && txtCreatePassword!=null)
             {
+                
                 var newUser = new User();
                 newUser.First_Name = txtFName.Text;
                 newUser.Last_Name = txtLName.Text;
