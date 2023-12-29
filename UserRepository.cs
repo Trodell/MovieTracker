@@ -15,8 +15,8 @@ namespace MovieTracker
         void AddMovie (Movie newMovie);
         decimal GetMaxUserID();
         decimal GetMaxMovieID();
-        User FindUserID(string username, string password);
         void AddUserMovies(UserMovies userMovies);
+        List<Movie> GetUserMovies(decimal userID);
     }
     class UserRepository : CRUD
     {
@@ -24,6 +24,7 @@ namespace MovieTracker
         public UserRepository()
         {
             entities = new MoviesdbEntities();
+
         }
         public void CreateUser(User newUser)
         {
@@ -65,10 +66,21 @@ namespace MovieTracker
         {
             return entities.Movies.Max(x => x.MovieID);
         }
-        public User FindUserID(string username, string password)
+        public List<Movie> GetUserMovies(decimal userID)
         {
-            return entities.Users.Find(username, password);
-        }
+            var userMovies = entities.UserMovies1.Where(um => um.UserID == userID).ToList();
 
+            // Retrieve movies based on UserMovies for the given user
+            List<Movie> moviesForUser = new List<Movie>();
+            foreach (var userMovie in userMovies)
+            {
+                var movie = entities.Movies.FirstOrDefault(m => m.MovieID == userMovie.MovieID);
+                if (movie != null)
+                {
+                    moviesForUser.Add(movie);
+                }
+            }
+            return moviesForUser;
+        }
     }
 }

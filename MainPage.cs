@@ -97,5 +97,13 @@ namespace MovieTracker
             userRepository.AddMovie(newMovie);
             userRepository.AddUserMovies(newUserMovie);
         }
+
+        private void btnList_Click(object sender, EventArgs e)
+        {
+            
+            UserMovieList userMovieList = new UserMovieList();
+            userMovieList.Show();
+            
+        }
     }
 }
