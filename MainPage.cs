@@ -26,6 +26,7 @@ namespace MovieTracker
         //test
         private async void MainPage_Load(object sender, EventArgs e)
         {
+            dataGridSearch.Visible = false;
             userRepository = new UserRepository();
             var options = new RestClientOptions("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1");
             var client = new RestClient(options);
@@ -50,8 +51,10 @@ namespace MovieTracker
 
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e) //search
         {
+            dataGridSearch.Visible = true;
+            dataGridViewMovies.Visible = false;
             string userInput = txtTitle.Text;
             try
             {
@@ -60,9 +63,12 @@ namespace MovieTracker
                 if (response.IsSuccessStatusCode)
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
-                    // Process the response content (responseContent) here
-                    // Update your application's UI or handle the data accordingly
-                    MessageBox.Show(responseContent); // For demonstration, displaying response content in a message box
+
+                    // Deserialize JSON response to MovieResponse
+                    MovieResponse movieResponse = JsonConvert.DeserializeObject<MovieResponse>(responseContent);
+
+                    // Bind the movies from the response to the DataGridView
+                    dataGridSearch.DataSource = movieResponse.Results;
                 }
                 else
                 {
@@ -73,7 +79,6 @@ namespace MovieTracker
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
-
         }
 
         private void dataGridViewMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)

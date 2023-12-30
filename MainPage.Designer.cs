@@ -34,7 +34,9 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnList = new System.Windows.Forms.Button();
+            this.dataGridSearch = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovies)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewMovies
@@ -93,11 +95,20 @@
             this.btnList.UseVisualStyleBackColor = true;
             this.btnList.Click += new System.EventHandler(this.btnList_Click);
             // 
+            // dataGridSearch
+            // 
+            this.dataGridSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSearch.Location = new System.Drawing.Point(89, 192);
+            this.dataGridSearch.Name = "dataGridSearch";
+            this.dataGridSearch.Size = new System.Drawing.Size(506, 150);
+            this.dataGridSearch.TabIndex = 7;
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridSearch);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnSearch);
@@ -108,6 +119,7 @@
             this.Text = "MainPage";
             this.Load += new System.EventHandler(this.MainPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovies)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,5 +132,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnList;
+        private System.Windows.Forms.DataGridView dataGridSearch;
     }
 }

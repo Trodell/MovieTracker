@@ -32,5 +32,20 @@ namespace MovieTracker
         public int total_pages { get; set; }
         public int total_results { get; set; }
     }
-   
+
+    //Searching
+    public class MovieResponse
+    {
+        public int Page { get; set; }
+        public int TotalResults { get; set; }
+        public int TotalPages { get; set; }
+        public List<Movie> Results { get; set; }
+    }
+
+    public class Movies
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        
+    }
 }
