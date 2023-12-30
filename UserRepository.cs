@@ -12,14 +12,14 @@ namespace MovieTracker
     {
         void CreateUser(User user);
         User FindUser(string username, string password);
-        void AddMovie (Movie newMovie);
+        void AddMovie (Movie newMovie, decimal userID);
         decimal GetMaxUserID();
         decimal GetMaxMovieID();
         void AddUserMovies(UserMovies userMovies);
         List<Movie> GetUserMovies(decimal userID);
         void DeleteMovie(UserMovies movie);
         UserMovies GetMovieID(decimal movieID);
-        Movie GetAllMovies(string movieTitle, string movieRelease);
+        //Movie GetAllMovies(string movieTitle, string movieRelease);
     }
     class UserRepository : CRUD
     {
@@ -29,17 +29,17 @@ namespace MovieTracker
             entities = new MoviesdbEntities();
 
         }
-        public Movie GetAllMovies(string movieTitle, string movieRelease)
-        {
-            try
-            {
-                return entities.Movies.First(x => x.Title == movieTitle && x.Release_Date == movieRelease);
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
+        //public Movie GetAllMovies(string movieTitle, string movieRelease)
+        //{
+        //    try
+        //    {
+        //        return entities.Movies.First(x => x.Title == movieTitle && x.Release_Date == movieRelease);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
         public void CreateUser(User newUser)
         {
             entities.Users.Add(newUser);
@@ -64,15 +64,60 @@ namespace MovieTracker
             entities.UserMovies1.Add(userMovies);
             entities.SaveChanges();
         }
-         public void AddMovie(Movie newMovie)
+         public void AddMovie(Movie movie, decimal userID)
         {
 
-            entities.Movies.Add(newMovie);
-            entities.SaveChanges();
+            //entities.Movies.Add(newMovie);
+            //entities.SaveChanges();
+            var existingMovie = entities.Movies.FirstOrDefault(m => m.Title == movie.Title && m.Release_Date == movie.Release_Date);
+
+            if (existingMovie != null)
+            {
+                // Movie exists, get its MovieID
+                decimal movieID = existingMovie.MovieID;
+
+                // Check if the movie is already in the user's list
+                var userMovieExists = entities.UserMovies1.Any(um => um.UserID == userID && um.MovieID == movieID);
+
+                if (!userMovieExists)
+                {
+                    // Movie is not in the user's list, add it
+                    UserMovies newUserMovie = new UserMovies
+                    {
+                        UserID = userID,
+                        MovieID = movieID
+                    };
+
+                    entities.UserMovies1.Add(newUserMovie);
+                    entities.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("This movie already exists");
+                }
+            }
+            else
+            {
+                // Movie doesn't exist, add it to the Movies table and then add to UserMovies
+                entities.Movies.Add(movie);
+                entities.SaveChanges();
+
+                // Retrieve the newly created MovieID
+                decimal newMovieID = movie.MovieID;
+
+                // Add the movie to the user's list
+                UserMovies newUserMovie = new UserMovies
+                {
+                    UserID = userID,
+                    MovieID = newMovieID
+                };
+
+                entities.UserMovies1.Add(newUserMovie);
+                entities.SaveChanges();
+            }
         }
         public decimal GetMaxUserID()
         {
-            
             return entities.Users.Max(x => x.UserID);
             
         }
