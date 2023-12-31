@@ -68,7 +68,10 @@ namespace MovieTracker
                     MovieResponse movieResponse = JsonConvert.DeserializeObject<MovieResponse>(responseContent);
 
                     // Bind the movies from the response to the DataGridView
+                    
                     dataGridSearch.DataSource = movieResponse.Results;
+                    dataGridSearch.Columns[3].Visible = false;
+                    dataGridSearch.Columns[4].Visible = false;
                 }
                 else
                 {
@@ -89,14 +92,27 @@ namespace MovieTracker
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            
-            var newMovie = new Movie();
-            newMovie.MovieID = userRepository.GetMaxMovieID()+1;
-            newMovie.Title = dataGridViewMovies.CurrentRow.Cells[4].Value.ToString();
-            newMovie.Overview = dataGridViewMovies.CurrentRow.Cells[5].Value.ToString();
-            newMovie.Release_Date = dataGridViewMovies.CurrentRow.Cells[8].Value.ToString();
-            var userToFind = userRepository.FindUser(Login.SetValueForText1.ToString(), Login.SetValueForText2.ToString());
-            userRepository.AddMovie(newMovie, userToFind.UserID);            
+            try
+            {
+                var newMovie = new Movie();
+                newMovie.MovieID = userRepository.GetMaxMovieID() + 1;
+                newMovie.Title = dataGridViewMovies.CurrentRow.Cells[4].Value.ToString();
+                newMovie.Overview = dataGridViewMovies.CurrentRow.Cells[5].Value.ToString();
+                newMovie.Release_Date = dataGridViewMovies.CurrentRow.Cells[8].Value.ToString();
+                var userToFind = userRepository.FindUser(Login.SetValueForText1.ToString(), Login.SetValueForText2.ToString());
+                userRepository.AddMovie(newMovie, userToFind.UserID);
+            }
+            catch(Exception ex)
+            {
+                var newMovie = new Movie();
+                newMovie.MovieID = userRepository.GetMaxMovieID() + 1;
+                newMovie.Title = dataGridSearch.CurrentRow.Cells[0].Value.ToString();
+                newMovie.Overview = dataGridSearch.CurrentRow.Cells[2].Value.ToString();
+                newMovie.Release_Date = dataGridSearch.CurrentRow.Cells[1].Value.ToString();
+                var userToFind = userRepository.FindUser(Login.SetValueForText1.ToString(), Login.SetValueForText2.ToString());
+                userRepository.AddMovie(newMovie,userToFind.UserID);
+            }
+                       
         }
 
         private void btnList_Click(object sender, EventArgs e)
