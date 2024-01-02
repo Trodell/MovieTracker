@@ -38,7 +38,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(306, 247);
+            this.btnLogin.Location = new System.Drawing.Point(308, 289);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(128, 29);
             this.btnLogin.TabIndex = 0;
@@ -48,14 +48,14 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(409, 96);
+            this.txtUsername.Location = new System.Drawing.Point(387, 188);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(100, 20);
             this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(409, 146);
+            this.txtPassword.Location = new System.Drawing.Point(387, 224);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 2;
@@ -63,7 +63,7 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(318, 99);
+            this.lblUsername.Location = new System.Drawing.Point(305, 191);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(55, 13);
             this.lblUsername.TabIndex = 3;
@@ -72,7 +72,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(318, 149);
+            this.lblPassword.Location = new System.Drawing.Point(305, 227);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(53, 13);
             this.lblPassword.TabIndex = 4;
@@ -80,7 +80,7 @@
             // 
             // btnCreateAcc
             // 
-            this.btnCreateAcc.Location = new System.Drawing.Point(321, 317);
+            this.btnCreateAcc.Location = new System.Drawing.Point(321, 343);
             this.btnCreateAcc.Name = "btnCreateAcc";
             this.btnCreateAcc.Size = new System.Drawing.Size(100, 23);
             this.btnCreateAcc.TabIndex = 5;

@@ -17,7 +17,7 @@ namespace MovieTracker
         decimal GetMaxMovieID();
         void AddUserMovies(UserMovies userMovies);
         List<Movie> GetUserMovies(decimal userID);
-        void DeleteMovie(UserMovies movie);
+        void DeleteMovie(UserMovies movie, Movie movie1, decimal userID);
         UserMovies GetMovieID(decimal movieID);
         //Movie GetAllMovies(string movieTitle, string movieRelease);
     }
@@ -29,17 +29,6 @@ namespace MovieTracker
             entities = new MoviesdbEntities();
 
         }
-        //public Movie GetAllMovies(string movieTitle, string movieRelease)
-        //{
-        //    try
-        //    {
-        //        return entities.Movies.First(x => x.Title == movieTitle && x.Release_Date == movieRelease);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return null;
-        //    }
-        //}
         public void CreateUser(User newUser)
         {
             entities.Users.Add(newUser);
@@ -66,68 +55,61 @@ namespace MovieTracker
         }
          public void AddMovie(Movie movie, decimal userID)
         {
+            var existingMovie = entities.Movies.FirstOrDefault(m => m.Title == movie.Title && m.Release_Date == movie.Release_Date); //does the movie exist in the movies table
 
-            //entities.Movies.Add(newMovie);
-            //entities.SaveChanges();
-            var existingMovie = entities.Movies.FirstOrDefault(m => m.Title == movie.Title && m.Release_Date == movie.Release_Date);
-
-            if (existingMovie != null)
+            if (existingMovie != null) //if the movie does exist
             {
-                // Movie exists, get its MovieID
-                decimal movieID = existingMovie.MovieID;
+                
+                decimal movieID = existingMovie.MovieID; //grabs the existing movie's ID
 
-                // Check if the movie is already in the user's list
-                var userMovieExists = entities.UserMovies1.Any(um => um.UserID == userID && um.MovieID == movieID);
+                
+                var userMovieExists = entities.UserMovies1.Any(um => um.UserID == userID && um.MovieID == movieID); //checks if the movie ID is already linked to the user ID by comparing each entity in the UserMovie table
 
-                if (!userMovieExists)
+                if (!userMovieExists) //movie ID is not linked to the user
                 {
-                    // Movie is not in the user's list, add it
-                    UserMovies newUserMovie = new UserMovies
+                    UserMovies newUserMovie = new UserMovies //creates a new entity in the UserMovie table
                     {
-                        UserID = userID,
-                        MovieID = movieID
+                        UserID = userID, //assigns the User ID
+                        MovieID = movieID //assigns to movie ID
                     };
 
-                    entities.UserMovies1.Add(newUserMovie);
-                    entities.SaveChanges();
+                    entities.UserMovies1.Add(newUserMovie); //adds the the new entity to User Movie table
+                    entities.SaveChanges(); //saves changes
                 }
-                else
+                else //movie is linked to the User in the UserMovie table
                 {
                     MessageBox.Show("This movie already exists");
                 }
             }
-            else
+            else //if the the movie doesn't exist
             {
-                // Movie doesn't exist, add it to the Movies table and then add to UserMovies
-                entities.Movies.Add(movie);
-                entities.SaveChanges();
+                entities.Movies.Add(movie); //add movie to the movie table
+                entities.SaveChanges(); // save changes
 
-                // Retrieve the newly created MovieID
-                decimal newMovieID = movie.MovieID;
+                decimal newMovieID = movie.MovieID; // Retrieve the newly created Movie ID from the main page
 
-                // Add the movie to the user's list
-                UserMovies newUserMovie = new UserMovies
+                UserMovies newUserMovie = new UserMovies //creates a new entity in the UserMovie table
                 {
-                    UserID = userID,
-                    MovieID = newMovieID
+                    UserID = userID, //assigns the User ID
+                    MovieID = newMovieID //assigns to movie ID
                 };
 
-                entities.UserMovies1.Add(newUserMovie);
-                entities.SaveChanges();
+                entities.UserMovies1.Add(newUserMovie); //adds the the new entity to User Movie table
+                entities.SaveChanges(); //saves changes
             }
         }
         public decimal GetMaxUserID()
         {
-            return entities.Users.Max(x => x.UserID);
+            return entities.Users.Max(x => x.UserID); //Finds max User ID
             
         }
         public decimal GetMaxMovieID()
         {
-            return entities.Movies.Max(x => x.MovieID);
+            return entities.Movies.Max(x => x.MovieID); //Finds max movie ID
         }
         public List<Movie> GetUserMovies(decimal userID)
         {
-            var userMovies = entities.UserMovies1.Where(um => um.UserID == userID).ToList();
+            var userMovies = entities.UserMovies1.Where(um => um.UserID == userID).ToList(); 
 
             // Retrieve movies based on UserMovies for the given user
             List<Movie> moviesForUser = new List<Movie>();
@@ -141,11 +123,52 @@ namespace MovieTracker
             }
             return moviesForUser;
         }
-        public void DeleteMovie(UserMovies movie)
+        public void DeleteMovie(UserMovies movie, Movie movieToDelete, decimal loggedInUserID)
         {
-            entities.UserMovies1.Remove(movie);
-            entities.SaveChanges();
+
+            //var movieToDelete = entities.UserMovies1.Where(x=> x.MovieID == movie.MovieID && x.UserID == userID);
+            //if (movieToDelete!=null)
+            //{
+            //    entities.Movies.Remove(movie1);
+            //    entities.SaveChanges();
+            //}
+            //else
+            //{
+            //    entities.UserMovies1.Remove(movie);
+            //    entities.SaveChanges();
+            //}
+            var movieID = movie.MovieID;
+
+            // Check if the movie ID exists in UserMovies for the logged-in user
+            bool movieInUserMoviesForCurrentUser = entities.UserMovies1
+                .Any(um => um.MovieID == movieID && um.UserID == loggedInUserID);
+
+            if (movieInUserMoviesForCurrentUser)
+            {
+                // If the movie ID exists for the logged-in user, delete the UserMovies record
+                var userMovieToDelete = entities.UserMovies1
+                    .FirstOrDefault(um => um.MovieID == movieID && um.UserID == loggedInUserID);
+
+                if (userMovieToDelete != null)
+                {
+                    entities.UserMovies1.Remove(userMovieToDelete);
+                    entities.SaveChanges();
+                }
+            }
+
+            // Proceed with deleting from Movies in any case (if it's not present in any user's list)
+            bool movieNotInUserMovies = !entities.UserMovies1.Any(um => um.MovieID == movieID);
+
+            if (movieNotInUserMovies)
+            {
+                // If the movie ID is not present in UserMovies, delete it from Movies
+                entities.Movies.Remove(movieToDelete);
+                entities.SaveChanges();
+            }
         }
+
+
+    
         public UserMovies GetMovieID(decimal movieID)
         {
             return entities.UserMovies1.First(x => x.MovieID == movieID);

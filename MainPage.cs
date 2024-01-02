@@ -92,7 +92,7 @@ namespace MovieTracker
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            try
+            if(dataGridSearch.Visible == false)
             {
                 var newMovie = new Movie();
                 newMovie.MovieID = userRepository.GetMaxMovieID() + 1;
@@ -102,7 +102,7 @@ namespace MovieTracker
                 var userToFind = userRepository.FindUser(Login.SetValueForText1.ToString(), Login.SetValueForText2.ToString());
                 userRepository.AddMovie(newMovie, userToFind.UserID);
             }
-            catch(Exception ex)
+            else
             {
                 var newMovie = new Movie();
                 newMovie.MovieID = userRepository.GetMaxMovieID() + 1;
@@ -110,8 +110,10 @@ namespace MovieTracker
                 newMovie.Overview = dataGridSearch.CurrentRow.Cells[2].Value.ToString();
                 newMovie.Release_Date = dataGridSearch.CurrentRow.Cells[1].Value.ToString();
                 var userToFind = userRepository.FindUser(Login.SetValueForText1.ToString(), Login.SetValueForText2.ToString());
-                userRepository.AddMovie(newMovie,userToFind.UserID);
+                userRepository.AddMovie(newMovie, userToFind.UserID);
             }
+                
+            
                        
         }
 

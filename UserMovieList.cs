@@ -34,7 +34,7 @@ namespace MovieTracker
             decimal userID = userToFind.UserID;
             var id = moviesGrid.CurrentRow.Cells[3].Value;
             var movieToDelete = userRepository.GetMovieID((decimal)id);
-            userRepository.DeleteMovie(movieToDelete);
+            userRepository.DeleteMovie(movieToDelete,movieToDelete.Movie,userID);
             MessageBox.Show("Movie Deleted");
             moviesGrid.DataSource = userRepository.GetUserMovies(userID);
         }
