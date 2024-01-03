@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,49 +56,62 @@ namespace MovieTracker
         }
          public void AddMovie(Movie movie, decimal userID)
         {
-            var existingMovie = entities.Movies.FirstOrDefault(m => m.Title == movie.Title && m.Release_Date == movie.Release_Date); //does the movie exist in the movies table
 
-            if (existingMovie != null) //if the movie does exist
+            using (var context = new MoviesdbEntities())
             {
-                
-                decimal movieID = existingMovie.MovieID; //grabs the existing movie's ID
+                var existingMovie = context.Movies.FirstOrDefault(m => m.Title == movie.Title && m.Release_Date == movie.Release_Date);
 
-                
-                var userMovieExists = entities.UserMovies1.Any(um => um.UserID == userID && um.MovieID == movieID); //checks if the movie ID is already linked to the user ID by comparing each entity in the UserMovie table
-
-                if (!userMovieExists) //movie ID is not linked to the user
+                if (existingMovie != null)
                 {
-                    UserMovies newUserMovie = new UserMovies //creates a new entity in the UserMovie table
+                    // Movie exists in the Movies table
+                    context.Entry(existingMovie).State = EntityState.Detached;
+                    decimal movieID = existingMovie.MovieID;
+
+                    var userMovieExists = context.UserMovies1.Any(um => um.UserID == userID && um.MovieID == movieID);
+
+                    if (!userMovieExists)
                     {
-                        UserID = userID, //assigns the User ID
-                        MovieID = movieID //assigns to movie ID
+                        // Create UserMovies entry
+                        UserMovies newUserMovie = new UserMovies
+                        {
+                            UserID = userID,
+                            MovieID = movieID
+                        };
+
+                        context.UserMovies1.Add(newUserMovie);
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("This movie already exists for this user");
+                    }
+                }
+                else
+                {
+                    // Movie doesn't exist in the Movies table, add it
+
+                    // Ensure that the primary key values are unique for each entity of type 'MovieTracker.Movie' in your database.
+                    // Verify that the database-generated primary keys are configured correctly in the database and in the Entity Framework model.
+                    // Use the Entity Designer for Database First/Model First configuration or use the 'HasDatabaseGeneratedOption" fluent API or 'DatabaseGeneratedAttribute' for Code First configuration.
+                    context.Entry(movie).State = EntityState.Added;
+                    context.SaveChanges();
+
+                    // Retrieve the newly created MovieID
+                    decimal newMovieID = movie.MovieID;
+
+                    // Create UserMovies entry for the new movie
+                    UserMovies newUserMovie = new UserMovies
+                    {
+                        UserID = userID,
+                        MovieID = newMovieID
                     };
 
-                    entities.UserMovies1.Add(newUserMovie); //adds the the new entity to User Movie table
-                    entities.SaveChanges(); //saves changes
-                }
-                else //movie is linked to the User in the UserMovie table
-                {
-                    MessageBox.Show("This movie already exists");
+                    context.UserMovies1.Add(newUserMovie);
+                    context.SaveChanges();
                 }
             }
-            else //if the the movie doesn't exist
-            {
-                entities.Movies.Add(movie); //add movie to the movie table
-                entities.SaveChanges(); // save changes
-
-                decimal newMovieID = movie.MovieID; // Retrieve the newly created Movie ID from the main page
-
-                UserMovies newUserMovie = new UserMovies //creates a new entity in the UserMovie table
-                {
-                    UserID = userID, //assigns the User ID
-                    MovieID = newMovieID //assigns to movie ID
-                };
-
-                entities.UserMovies1.Add(newUserMovie); //adds the the new entity to User Movie table
-                entities.SaveChanges(); //saves changes
-            }
-        }
+        
+    }
         public decimal GetMaxUserID()
         {
             return entities.Users.Max(x => x.UserID); //Finds max User ID
@@ -152,6 +166,7 @@ namespace MovieTracker
                 if (userMovieToDelete != null)
                 {
                     entities.UserMovies1.Remove(userMovieToDelete);
+                    
                     entities.SaveChanges();
                 }
             }
@@ -163,6 +178,7 @@ namespace MovieTracker
             {
                 // If the movie ID is not present in UserMovies, delete it from Movies
                 entities.Movies.Remove(movieToDelete);
+                
                 entities.SaveChanges();
             }
         }
