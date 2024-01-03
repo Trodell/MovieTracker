@@ -36,9 +36,10 @@ namespace MovieTracker
 
         private void btnCreateAcc_Click_1(object sender, EventArgs e)
         {
+            this.Hide();
             CreateAccount createAccount = new CreateAccount();
-            createAccount.ShowDialog();
-            this.Close();
+            createAccount.Show();
+            
         }
         
         private void btnLogin_Click_1(object sender, EventArgs e)

@@ -46,18 +46,18 @@ namespace MovieTracker
                 newUser.UserID = userRepository.GetMaxUserID()+1;
                 userRepository.CreateUser(newUser);
                 MessageBox.Show("Account Created!");
-                this.Close();
-                MainPage mainPage = new MainPage();
-                mainPage.Show();
+                this.Hide();
+                Login login = new Login();
+                login.Show();
             }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //work in progress
-            //Hide();
-            //Login login = new Login();
-            //login.Show();
+            
+            this.Close();
+            Login login = new Login();
+            login.Show();
         }
     }
 }
