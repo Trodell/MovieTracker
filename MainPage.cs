@@ -48,11 +48,18 @@ namespace MovieTracker
             dataGridViewMovies.Columns[1].Visible = false; // backdrop path
             dataGridViewMovies.Columns[2].Visible = false; // id number
             dataGridViewMovies.Columns[3].Visible = false; // language
+            dataGridViewMovies.Columns[4].HeaderText = "Title";
+            dataGridViewMovies.Columns[5].HeaderText = "Description";
+            dataGridViewMovies.Columns[6].HeaderText = "Popularity";
             dataGridViewMovies.Columns[7].Visible = false; // poster path
+            dataGridViewMovies.Columns[8].HeaderText = "Release";
             dataGridViewMovies.Columns[9].Visible = false; // video??
             dataGridViewMovies.Columns[10].Visible = false; // vote average
             dataGridViewMovies.Columns[11].Visible = false; // vote count
-            dataGridViewMovies.Columns[5].Width = 150;
+            dataGridViewMovies.Columns[4].Width = 140;
+            dataGridViewMovies.Columns[5].Width = 297;
+            dataGridViewMovies.Columns[6].Width = 58;
+            dataGridViewMovies.Columns[8].Width = 65;
 
         }
 
@@ -61,9 +68,10 @@ namespace MovieTracker
 
         }
 
-        private async void button1_Click(object sender, EventArgs e) //search
+        private async void btnSearch_Click(object sender, EventArgs e) //search
         {
             dataGridSearch.Visible = true;
+           
             dataGridViewMovies.Visible = false;
             string userInput = txtTitle.Text;
             try
@@ -80,6 +88,14 @@ namespace MovieTracker
                     // Bind the movies from the response to the DataGridView
                     
                     dataGridSearch.DataSource = movieResponse.Results;
+                    dataGridSearch.Columns[0].Width = 140;
+                    dataGridSearch.Columns[2].Width = 355;
+                    dataGridSearch.Columns[1].Width = 65;
+                    dataGridSearch.Columns[2].DisplayIndex = 1;
+                    dataGridSearch.Columns[1].DisplayIndex = 2;
+                    dataGridSearch.Columns[0].HeaderText = "Title";
+                    dataGridSearch.Columns[1].HeaderText = "Release";
+                    dataGridSearch.Columns[2].HeaderText = "Description";
                     dataGridSearch.Columns[3].Visible = false;
                     dataGridSearch.Columns[4].Visible = false;
                 }
@@ -100,7 +116,7 @@ namespace MovieTracker
             
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnAdd_Click_1(object sender, EventArgs e)
         {
             if(dataGridSearch.Visible == false)
             {
@@ -127,7 +143,7 @@ namespace MovieTracker
                        
         }
 
-        private void btnList_Click(object sender, EventArgs e)
+        private void btnList_Click_1(object sender, EventArgs e)
         {
             
             UserMovieList userMovieList = new UserMovieList();
@@ -139,5 +155,7 @@ namespace MovieTracker
         {
 
         }
+
+
     }
 }

@@ -24,6 +24,11 @@ namespace MovieTracker
             decimal userID = userToFind.UserID;
             List<Movie> userMovies = userRepository.GetUserMovies(userID);
             moviesGrid.DataSource = userMovies;
+            moviesGrid.Columns[0].HeaderText = "Title";
+            moviesGrid.Columns[1].HeaderText = "Release";
+            moviesGrid.Columns[2].HeaderText = "Description";
+            moviesGrid.Columns[1].DisplayIndex = 2;
+            moviesGrid.Columns[2].DisplayIndex = 1;
             moviesGrid.Columns[3].Visible = false; //Id
             moviesGrid.Columns[4].Visible = false; //??
         }

@@ -95,7 +95,7 @@
             this.btnCreateAcc.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCreateAcc.Depth = 0;
             this.btnCreateAcc.Icon = null;
-            this.btnCreateAcc.Location = new System.Drawing.Point(319, 369);
+            this.btnCreateAcc.Location = new System.Drawing.Point(315, 361);
             this.btnCreateAcc.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCreateAcc.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCreateAcc.Name = "btnCreateAcc";
