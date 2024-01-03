@@ -33,135 +33,171 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtCreateUsername = new System.Windows.Forms.TextBox();
             this.txtCreatePassword = new System.Windows.Forms.TextBox();
-            this.lblFName = new System.Windows.Forms.Label();
-            this.lblLName = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblCreateUsername = new System.Windows.Forms.Label();
-            this.lblCreatePassword = new System.Windows.Forms.Label();
-            this.btnCreate = new System.Windows.Forms.Button();
             this.txtAge = new System.Windows.Forms.TextBox();
-            this.lblAge = new System.Windows.Forms.Label();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.btnCreate = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SuspendLayout();
             // 
             // txtFName
             // 
-            this.txtFName.Location = new System.Drawing.Point(394, 64);
+            this.txtFName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFName.Location = new System.Drawing.Point(380, 93);
             this.txtFName.Name = "txtFName";
-            this.txtFName.Size = new System.Drawing.Size(100, 20);
+            this.txtFName.Size = new System.Drawing.Size(100, 26);
             this.txtFName.TabIndex = 0;
             // 
             // txtLName
             // 
-            this.txtLName.Location = new System.Drawing.Point(394, 112);
+            this.txtLName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLName.Location = new System.Drawing.Point(380, 141);
             this.txtLName.Name = "txtLName";
-            this.txtLName.Size = new System.Drawing.Size(100, 20);
+            this.txtLName.Size = new System.Drawing.Size(100, 26);
             this.txtLName.TabIndex = 1;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(394, 220);
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(380, 231);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtEmail.Size = new System.Drawing.Size(100, 26);
             this.txtEmail.TabIndex = 3;
             // 
             // txtCreateUsername
             // 
-            this.txtCreateUsername.Location = new System.Drawing.Point(394, 273);
+            this.txtCreateUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCreateUsername.Location = new System.Drawing.Point(380, 280);
             this.txtCreateUsername.Name = "txtCreateUsername";
-            this.txtCreateUsername.Size = new System.Drawing.Size(100, 20);
+            this.txtCreateUsername.Size = new System.Drawing.Size(100, 26);
             this.txtCreateUsername.TabIndex = 4;
             // 
             // txtCreatePassword
             // 
-            this.txtCreatePassword.Location = new System.Drawing.Point(394, 321);
+            this.txtCreatePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCreatePassword.Location = new System.Drawing.Point(380, 331);
             this.txtCreatePassword.Name = "txtCreatePassword";
-            this.txtCreatePassword.Size = new System.Drawing.Size(100, 20);
+            this.txtCreatePassword.Size = new System.Drawing.Size(100, 26);
             this.txtCreatePassword.TabIndex = 5;
-            // 
-            // lblFName
-            // 
-            this.lblFName.AutoSize = true;
-            this.lblFName.Location = new System.Drawing.Point(301, 67);
-            this.lblFName.Name = "lblFName";
-            this.lblFName.Size = new System.Drawing.Size(57, 13);
-            this.lblFName.TabIndex = 5;
-            this.lblFName.Text = "First Name";
-            // 
-            // lblLName
-            // 
-            this.lblLName.AutoSize = true;
-            this.lblLName.Location = new System.Drawing.Point(301, 115);
-            this.lblLName.Name = "lblLName";
-            this.lblLName.Size = new System.Drawing.Size(58, 13);
-            this.lblLName.TabIndex = 6;
-            this.lblLName.Text = "Last Name";
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(322, 223);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(32, 13);
-            this.lblEmail.TabIndex = 7;
-            this.lblEmail.Text = "Email";
-            // 
-            // lblCreateUsername
-            // 
-            this.lblCreateUsername.AutoSize = true;
-            this.lblCreateUsername.Location = new System.Drawing.Point(304, 276);
-            this.lblCreateUsername.Name = "lblCreateUsername";
-            this.lblCreateUsername.Size = new System.Drawing.Size(55, 13);
-            this.lblCreateUsername.TabIndex = 8;
-            this.lblCreateUsername.Text = "Username";
-            // 
-            // lblCreatePassword
-            // 
-            this.lblCreatePassword.AutoSize = true;
-            this.lblCreatePassword.Location = new System.Drawing.Point(301, 324);
-            this.lblCreatePassword.Name = "lblCreatePassword";
-            this.lblCreatePassword.Size = new System.Drawing.Size(53, 13);
-            this.lblCreatePassword.TabIndex = 9;
-            this.lblCreatePassword.Text = "Password";
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Location = new System.Drawing.Point(331, 368);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(80, 29);
-            this.btnCreate.TabIndex = 6;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // txtAge
             // 
-            this.txtAge.Location = new System.Drawing.Point(394, 166);
+            this.txtAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAge.Location = new System.Drawing.Point(380, 186);
             this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(33, 20);
+            this.txtAge.Size = new System.Drawing.Size(33, 26);
             this.txtAge.TabIndex = 2;
             // 
-            // lblAge
+            // materialLabel1
             // 
-            this.lblAge.AutoSize = true;
-            this.lblAge.Location = new System.Drawing.Point(328, 169);
-            this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(26, 13);
-            this.lblAge.TabIndex = 12;
-            this.lblAge.Text = "Age";
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(287, 97);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(87, 19);
+            this.materialLabel1.TabIndex = 13;
+            this.materialLabel1.Text = "First Name:";
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(288, 145);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(86, 19);
+            this.materialLabel2.TabIndex = 14;
+            this.materialLabel2.Text = "Last Name:";
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(335, 190);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(39, 19);
+            this.materialLabel3.TabIndex = 15;
+            this.materialLabel3.Text = "Age:";
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(323, 235);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(51, 19);
+            this.materialLabel4.TabIndex = 16;
+            this.materialLabel4.Text = "Email:";
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(293, 284);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(81, 19);
+            this.materialLabel5.TabIndex = 17;
+            this.materialLabel5.Text = "Username:";
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(295, 335);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(79, 19);
+            this.materialLabel6.TabIndex = 18;
+            this.materialLabel6.Text = "Password:";
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.AutoSize = true;
+            this.btnCreate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCreate.Depth = 0;
+            this.btnCreate.Icon = null;
+            this.btnCreate.Location = new System.Drawing.Point(315, 384);
+            this.btnCreate.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Primary = true;
+            this.btnCreate.Size = new System.Drawing.Size(138, 36);
+            this.btnCreate.TabIndex = 19;
+            this.btnCreate.Text = "Create Account";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // CreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblAge);
-            this.Controls.Add(this.txtAge);
             this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.lblCreatePassword);
-            this.Controls.Add(this.lblCreateUsername);
-            this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.lblLName);
-            this.Controls.Add(this.lblFName);
+            this.Controls.Add(this.materialLabel6);
+            this.Controls.Add(this.materialLabel5);
+            this.Controls.Add(this.materialLabel4);
+            this.Controls.Add(this.materialLabel3);
+            this.Controls.Add(this.materialLabel2);
+            this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.txtAge);
             this.Controls.Add(this.txtCreatePassword);
             this.Controls.Add(this.txtCreateUsername);
             this.Controls.Add(this.txtEmail);
@@ -182,13 +218,13 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtCreateUsername;
         private System.Windows.Forms.TextBox txtCreatePassword;
-        private System.Windows.Forms.Label lblFName;
-        private System.Windows.Forms.Label lblLName;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblCreateUsername;
-        private System.Windows.Forms.Label lblCreatePassword;
-        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.TextBox txtAge;
-        private System.Windows.Forms.Label lblAge;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private MaterialSkin.Controls.MaterialRaisedButton btnCreate;
     }
 }
