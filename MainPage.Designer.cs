@@ -35,6 +35,7 @@
             this.btnSearch = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnList = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnAdd = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnLoginPage = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovies)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSearch)).BeginInit();
             this.SuspendLayout();
@@ -104,14 +105,14 @@
             this.btnList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnList.Depth = 0;
             this.btnList.Icon = null;
-            this.btnList.Location = new System.Drawing.Point(656, 96);
+            this.btnList.Location = new System.Drawing.Point(687, 66);
             this.btnList.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnList.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnList.Name = "btnList";
             this.btnList.Primary = false;
-            this.btnList.Size = new System.Drawing.Size(94, 36);
+            this.btnList.Size = new System.Drawing.Size(112, 36);
             this.btnList.TabIndex = 10;
-            this.btnList.Text = "Movie List";
+            this.btnList.Text = "Movie List ➡";
             this.btnList.UseVisualStyleBackColor = true;
             this.btnList.Click += new System.EventHandler(this.btnList_Click_1);
             // 
@@ -131,11 +132,29 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
+            // btnLoginPage
+            // 
+            this.btnLoginPage.AutoSize = true;
+            this.btnLoginPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnLoginPage.Depth = 0;
+            this.btnLoginPage.Icon = null;
+            this.btnLoginPage.Location = new System.Drawing.Point(3, 66);
+            this.btnLoginPage.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnLoginPage.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnLoginPage.Name = "btnLoginPage";
+            this.btnLoginPage.Primary = false;
+            this.btnLoginPage.Size = new System.Drawing.Size(78, 36);
+            this.btnLoginPage.TabIndex = 12;
+            this.btnLoginPage.Text = "⬅ Login";
+            this.btnLoginPage.UseVisualStyleBackColor = true;
+            this.btnLoginPage.Click += new System.EventHandler(this.btnLoginPage_Click);
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnLoginPage);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnSearch);
@@ -161,5 +180,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnSearch;
         private MaterialSkin.Controls.MaterialFlatButton btnList;
         private MaterialSkin.Controls.MaterialRaisedButton btnAdd;
+        private MaterialSkin.Controls.MaterialFlatButton btnLoginPage;
     }
 }

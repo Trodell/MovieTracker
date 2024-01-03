@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,12 +12,16 @@ using System.Windows.Forms;
 
 namespace MovieTracker
 {
-    public partial class UserMovieList : Form
+    public partial class UserMovieList : MaterialForm
     {
         UserRepository userRepository = new UserRepository();
         public UserMovieList()
         {
             InitializeComponent();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
         private void UserMovieList_Load(object sender, EventArgs e)
@@ -29,11 +35,14 @@ namespace MovieTracker
             moviesGrid.Columns[2].HeaderText = "Description";
             moviesGrid.Columns[1].DisplayIndex = 2;
             moviesGrid.Columns[2].DisplayIndex = 1;
+            moviesGrid.Columns[0].Width = 140;
+            moviesGrid.Columns[2].Width = 355;
+            moviesGrid.Columns[1].Width = 65;
             moviesGrid.Columns[3].Visible = false; //Id
             moviesGrid.Columns[4].Visible = false; //??
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
             var userToFind = userRepository.FindUser(Login.SetValueForText1.ToString(), Login.SetValueForText2.ToString());
             decimal userID = userToFind.UserID;
@@ -42,6 +51,22 @@ namespace MovieTracker
             userRepository.DeleteMovie(movieToDelete,movieToDelete.Movie,userID);
             MessageBox.Show("Movie Deleted");
             moviesGrid.DataSource = userRepository.GetUserMovies(userID);
+        }
+
+        private void txtTitle_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e) //btnSearch
+        {
+            //Work In Progress :C
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

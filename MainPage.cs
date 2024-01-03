@@ -156,6 +156,9 @@ namespace MovieTracker
 
         }
 
-
+        private void btnLoginPage_Click(object sender, EventArgs e)
+        {
+            //Work In Progress
+        }
     }
 }
