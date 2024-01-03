@@ -48,7 +48,7 @@ namespace MovieTracker
             decimal userID = userToFind.UserID;
             var id = moviesGrid.CurrentRow.Cells[3].Value;
             var movieToDelete = userRepository.GetMovieID((decimal)id);
-            userRepository.DeleteMovie(movieToDelete,movieToDelete.Movie,userID);
+            userRepository.DeleteMovie(movieToDelete, movieToDelete.Movie, userID);
             MessageBox.Show("Movie Deleted");
             moviesGrid.DataSource = userRepository.GetUserMovies(userID);
         }
@@ -60,9 +60,15 @@ namespace MovieTracker
 
         private void materialRaisedButton1_Click(object sender, EventArgs e) //btnSearch
         {
-            //Work In Progress :C
 
+            var searchTerm = txtTitle.Text;
+            List<MovieTracker.Movie> moviesList = (List<MovieTracker.Movie>)moviesGrid.DataSource;
+            List<MovieTracker.Movie> filteredMoviesList = moviesList.Where(movie => movie.Title.Contains(searchTerm)).ToList();
+            filteredMoviesList.AddRange(moviesList.Except(filteredMoviesList));
+            moviesGrid.DataSource = filteredMoviesList;
         }
+
+    
 
         private void btnBack_Click(object sender, EventArgs e)
         {
