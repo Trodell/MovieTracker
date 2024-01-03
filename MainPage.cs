@@ -12,16 +12,24 @@ using RestSharp;
 using Newtonsoft.Json;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace MovieTracker
 {
-    public partial class MainPage : Form
+    public partial class MainPage : MaterialForm
     {
         UserRepository userRepository;
         private HttpClient client = new HttpClient();
         public MainPage()
         {
             InitializeComponent();
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            
         }
         //test
         private async void MainPage_Load(object sender, EventArgs e)
@@ -44,6 +52,8 @@ namespace MovieTracker
             dataGridViewMovies.Columns[9].Visible = false; // video??
             dataGridViewMovies.Columns[10].Visible = false; // vote average
             dataGridViewMovies.Columns[11].Visible = false; // vote count
+            dataGridViewMovies.Columns[5].Width = 150;
+
         }
 
         private async void txtTitle_TextChanged(object sender, EventArgs e)
@@ -123,6 +133,11 @@ namespace MovieTracker
             UserMovieList userMovieList = new UserMovieList();
             userMovieList.Show();
             
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

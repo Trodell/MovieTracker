@@ -34,14 +34,14 @@ namespace MovieTracker
             userRepository = new UserRepository();
         }
 
-        private void btnCreateAcc_Click(object sender, EventArgs e)
+        private void btnCreateAcc_Click_1(object sender, EventArgs e)
         {
             CreateAccount createAccount = new CreateAccount();
             createAccount.ShowDialog();
             this.Close();
         }
         
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click_1(object sender, EventArgs e)
         {
             SetValueForText1 = txtUsername.Text;
             SetValueForText2 = txtPassword.Text;
