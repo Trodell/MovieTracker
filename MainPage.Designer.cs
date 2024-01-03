@@ -105,7 +105,7 @@
             this.btnList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnList.Depth = 0;
             this.btnList.Icon = null;
-            this.btnList.Location = new System.Drawing.Point(687, 66);
+            this.btnList.Location = new System.Drawing.Point(686, 66);
             this.btnList.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnList.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnList.Name = "btnList";
@@ -138,7 +138,7 @@
             this.btnLoginPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnLoginPage.Depth = 0;
             this.btnLoginPage.Icon = null;
-            this.btnLoginPage.Location = new System.Drawing.Point(3, 66);
+            this.btnLoginPage.Location = new System.Drawing.Point(2, 66);
             this.btnLoginPage.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnLoginPage.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLoginPage.Name = "btnLoginPage";

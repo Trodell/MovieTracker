@@ -145,7 +145,7 @@ namespace MovieTracker
 
         private void btnList_Click_1(object sender, EventArgs e)
         {
-            
+            Close();
             UserMovieList userMovieList = new UserMovieList();
             userMovieList.Show();
             
@@ -158,7 +158,9 @@ namespace MovieTracker
 
         private void btnLoginPage_Click(object sender, EventArgs e)
         {
-            //Work In Progress
+            Close();
+            Login login = new Login();
+            login.Show();
         }
     }
 }

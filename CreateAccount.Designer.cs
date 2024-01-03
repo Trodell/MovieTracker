@@ -41,6 +41,7 @@
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.btnCreate = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnLogin = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // txtFName
@@ -185,11 +186,29 @@
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
+            // btnLogin
+            // 
+            this.btnLogin.AutoSize = true;
+            this.btnLogin.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnLogin.Depth = 0;
+            this.btnLogin.Icon = null;
+            this.btnLogin.Location = new System.Drawing.Point(719, 65);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnLogin.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Primary = false;
+            this.btnLogin.Size = new System.Drawing.Size(79, 36);
+            this.btnLogin.TabIndex = 20;
+            this.btnLogin.Text = "Login ➡";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
             // CreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.materialLabel5);
@@ -226,5 +245,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialRaisedButton btnCreate;
+        private MaterialSkin.Controls.MaterialFlatButton btnLogin;
     }
 }

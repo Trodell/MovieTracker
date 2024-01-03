@@ -66,7 +66,9 @@ namespace MovieTracker
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
+            MainPage mainPage = new MainPage();
+            mainPage.Show();
         }
     }
 }

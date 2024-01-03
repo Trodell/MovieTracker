@@ -50,10 +50,9 @@ namespace MovieTracker
             var user = userRepository.FindUser(username,password);
             if (user != null)
             {
-                
-                MainPage mainPage = new MainPage();
-                mainPage.ShowDialog();
-                this.Close();
+                this.Hide();
+                MainPage newForm = new MainPage();
+                newForm.Show();
             }
             else
                 MessageBox.Show("That user doesn't exist");

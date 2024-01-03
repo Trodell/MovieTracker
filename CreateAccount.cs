@@ -52,5 +52,12 @@ namespace MovieTracker
             }
         }
 
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            //work in progress
+            //Hide();
+            //Login login = new Login();
+            //login.Show();
+        }
     }
 }
