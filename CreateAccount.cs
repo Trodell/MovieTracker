@@ -33,7 +33,6 @@ namespace MovieTracker
             lblAgeWarning.Visible = false;
             lblEmailWarning.Visible = false;
             lblPasswordWarning.Visible = false;
-            //btnCreate.Enabled = false;
         }
 
         private void btnCreate_Click_1(object sender, EventArgs e)
