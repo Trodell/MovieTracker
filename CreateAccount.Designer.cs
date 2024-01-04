@@ -42,6 +42,9 @@
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.btnCreate = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnLogin = new MaterialSkin.Controls.MaterialFlatButton();
+            this.lblAgeWarning = new System.Windows.Forms.Label();
+            this.lblEmailWarning = new System.Windows.Forms.Label();
+            this.lblPasswordWarning = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtFName
@@ -51,6 +54,7 @@
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(100, 26);
             this.txtFName.TabIndex = 0;
+            this.txtFName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFName_KeyPress);
             // 
             // txtLName
             // 
@@ -59,6 +63,7 @@
             this.txtLName.Name = "txtLName";
             this.txtLName.Size = new System.Drawing.Size(100, 26);
             this.txtLName.TabIndex = 1;
+            this.txtLName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLName_KeyPress);
             // 
             // txtEmail
             // 
@@ -67,6 +72,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 26);
             this.txtEmail.TabIndex = 3;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // txtCreateUsername
             // 
@@ -83,6 +89,7 @@
             this.txtCreatePassword.Name = "txtCreatePassword";
             this.txtCreatePassword.Size = new System.Drawing.Size(100, 26);
             this.txtCreatePassword.TabIndex = 5;
+            this.txtCreatePassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtCreatePassword_Validating);
             // 
             // txtAge
             // 
@@ -91,6 +98,7 @@
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(33, 26);
             this.txtAge.TabIndex = 2;
+            this.txtAge.Validating += new System.ComponentModel.CancelEventHandler(this.txtAge_Validating);
             // 
             // materialLabel1
             // 
@@ -203,11 +211,45 @@
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // lblAgeWarning
+            // 
+            this.lblAgeWarning.AutoSize = true;
+            this.lblAgeWarning.ForeColor = System.Drawing.Color.Red;
+            this.lblAgeWarning.Location = new System.Drawing.Point(419, 194);
+            this.lblAgeWarning.Name = "lblAgeWarning";
+            this.lblAgeWarning.Size = new System.Drawing.Size(113, 13);
+            this.lblAgeWarning.TabIndex = 21;
+            this.lblAgeWarning.Text = "Please enter a number";
+            // 
+            // lblEmailWarning
+            // 
+            this.lblEmailWarning.AutoSize = true;
+            this.lblEmailWarning.ForeColor = System.Drawing.Color.Red;
+            this.lblEmailWarning.Location = new System.Drawing.Point(486, 239);
+            this.lblEmailWarning.Name = "lblEmailWarning";
+            this.lblEmailWarning.Size = new System.Drawing.Size(93, 13);
+            this.lblEmailWarning.TabIndex = 22;
+            this.lblEmailWarning.Text = "Please enter email";
+            // 
+            // lblPasswordWarning
+            // 
+            this.lblPasswordWarning.AutoSize = true;
+            this.lblPasswordWarning.ForeColor = System.Drawing.Color.Red;
+            this.lblPasswordWarning.Location = new System.Drawing.Point(486, 331);
+            this.lblPasswordWarning.Name = "lblPasswordWarning";
+            this.lblPasswordWarning.Size = new System.Drawing.Size(159, 39);
+            this.lblPasswordWarning.TabIndex = 23;
+            this.lblPasswordWarning.Text = "Must be 8 characters long and \r\nhave an uppercase, lowercase, \r\nnumber, and speci" +
+    "al character";
+            // 
             // CreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblPasswordWarning);
+            this.Controls.Add(this.lblEmailWarning);
+            this.Controls.Add(this.lblAgeWarning);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.materialLabel6);
@@ -246,5 +288,8 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialRaisedButton btnCreate;
         private MaterialSkin.Controls.MaterialFlatButton btnLogin;
+        private System.Windows.Forms.Label lblAgeWarning;
+        private System.Windows.Forms.Label lblEmailWarning;
+        private System.Windows.Forms.Label lblPasswordWarning;
     }
 }
