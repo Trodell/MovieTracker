@@ -143,9 +143,9 @@
             this.btnLoginPage.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLoginPage.Name = "btnLoginPage";
             this.btnLoginPage.Primary = false;
-            this.btnLoginPage.Size = new System.Drawing.Size(78, 36);
+            this.btnLoginPage.Size = new System.Drawing.Size(94, 36);
             this.btnLoginPage.TabIndex = 12;
-            this.btnLoginPage.Text = "⬅ Login";
+            this.btnLoginPage.Text = "⬅ Log Out";
             this.btnLoginPage.UseVisualStyleBackColor = true;
             this.btnLoginPage.Click += new System.EventHandler(this.btnLoginPage_Click);
             // 

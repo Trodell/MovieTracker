@@ -15,8 +15,8 @@ namespace MovieTracker
 {
     public partial class Login : MaterialForm
     {
-        public static string SetValueForText1 = "";
-        public static string SetValueForText2 = "";
+        public static string SetValueForText1 = ""; //Use this to keep track of the User's Username to pull their ID number
+        public static string SetValueForText2 = ""; //Use this to keep track of the User's Username to pull their ID number
         UserRepository userRepository;
         public Login()
         {
@@ -36,7 +36,7 @@ namespace MovieTracker
 
         private void btnCreateAcc_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide(); //
             CreateAccount createAccount = new CreateAccount();
             createAccount.Show();
             

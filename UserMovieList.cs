@@ -44,7 +44,7 @@ namespace MovieTracker
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            var userToFind = userRepository.FindUser(Login.SetValueForText1.ToString(), Login.SetValueForText2.ToString());
+            var userToFind = userRepository.FindUser(Login.SetValueForText1.ToString(), Login.SetValueForText2.ToString()); //Pulls the user's ID
             decimal userID = userToFind.UserID;
             var id = moviesGrid.CurrentRow.Cells[3].Value;
             var movieToDelete = userRepository.GetMovieID((decimal)id);

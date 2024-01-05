@@ -31,12 +31,11 @@ namespace MovieTracker
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
             
         }
-        //test
         private async void MainPage_Load(object sender, EventArgs e)
         {
-            dataGridSearch.Visible = false;
+            dataGridSearch.Visible = false; //data grid for search is not visible
             userRepository = new UserRepository();
-            var options = new RestClientOptions("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1");
+            var options = new RestClientOptions("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"); //link for the trending movies
             var client = new RestClient(options);
             var request = new RestRequest("");
             request.AddHeader("accept", "application/json");
@@ -62,7 +61,6 @@ namespace MovieTracker
             dataGridViewMovies.Columns[8].Width = 65;
 
         }
-
         private async void txtTitle_TextChanged(object sender, EventArgs e)
         {
 
@@ -76,18 +74,13 @@ namespace MovieTracker
             string userInput = txtTitle.Text;
             try
             {
-                string apiUrl = $"https://api.themoviedb.org/3/search/movie?query={userInput}&api_key=22ff9d8c655fb5bde0c5427a33701766";
+                string apiUrl = $"https://api.themoviedb.org/3/search/movie?query={userInput}&api_key=22ff9d8c655fb5bde0c5427a33701766"; //link for the for searching movies
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
                 if (response.IsSuccessStatusCode)
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
-
-                    // Deserialize JSON response to MovieResponse
-                    MovieResponse movieResponse = JsonConvert.DeserializeObject<MovieResponse>(responseContent);
-
-                    // Bind the movies from the response to the DataGridView
-                    
-                    dataGridSearch.DataSource = movieResponse.Results;
+                    MovieResponse movieResponse = JsonConvert.DeserializeObject<MovieResponse>(responseContent); //Deserialize the JSON response to MovieResponse
+                    dataGridSearch.DataSource = movieResponse.Results; //Attach the movies from the response to a data grid
                     dataGridSearch.Columns[0].Width = 140;
                     dataGridSearch.Columns[2].Width = 355;
                     dataGridSearch.Columns[1].Width = 65;
