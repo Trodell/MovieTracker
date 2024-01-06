@@ -44,16 +44,21 @@ namespace MovieTracker
         
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
-            SetValueForText1 = txtUsername.Text;
-            SetValueForText2 = txtPassword.Text;
             var username = txtUsername.Text;
-            var password = txtPassword.Text;
+            var password = userRepository.HashPassword(txtPassword.Text);
+            SetValueForText1 = txtUsername.Text;
+            SetValueForText2 = password;
             var user = userRepository.FindUser(username,password);
             if (user != null)
             {
-                this.Hide();
-                MainPage newForm = new MainPage();
-                newForm.Show();
+                bool passwordMatch = userRepository.VerifyPassword(txtPassword.Text,password);
+                if (passwordMatch)
+                {
+                    this.Hide();
+                    MainPage newForm = new MainPage();
+                    newForm.Show();
+                }
+               
             }
             else
                 MessageBox.Show("That user doesn't exist");

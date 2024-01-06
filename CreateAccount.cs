@@ -46,7 +46,7 @@ namespace MovieTracker
                 newUser.Age = decimal.Parse(txtAge.Text);
                 newUser.Email = txtEmail.Text;
                 newUser.Username = txtCreateUsername.Text;
-                newUser.Password = txtCreatePassword.Text;
+                newUser.Password = userRepository.HashPassword(txtCreatePassword.Text);
                 newUser.UserID = userRepository.GetMaxUserID() + 1;
                 userRepository.CreateUser(newUser);
                 MessageBox.Show("Account Created!");

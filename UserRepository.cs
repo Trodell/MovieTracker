@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,8 @@ namespace MovieTracker
         List<Movie> GetUserMovies(decimal userID);
         void DeleteMovie(UserMovies movie, Movie movie1, decimal userID);
         UserMovies GetMovieID(decimal movieID);
+        bool VerifyPassword(string enteredPassword, string storedHashedPassword);
+        string HashPassword(string password);
     }
     class UserRepository : CRUD
     {
@@ -38,6 +41,7 @@ namespace MovieTracker
         {
             try
             {
+               // var hashedPassword = HashPassword(password);
                 return entities.Users.First(x => x.Username == username && x.Password == password );
                 
             }
@@ -133,6 +137,19 @@ namespace MovieTracker
         public UserMovies GetMovieID(decimal movieID)
         {
             return entities.UserMovies1.First(x => x.MovieID == movieID);
+        }
+        public string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(hashedBytes);
+            }
+        }
+        public bool VerifyPassword(string enteredPassword, string storedHashedPassword)
+        {
+            string hashedEnteredPassword = HashPassword(enteredPassword);
+            return hashedEnteredPassword == storedHashedPassword;
         }
     }
 }
