@@ -41,7 +41,6 @@ namespace MovieTracker
         {
             try
             {
-               // var hashedPassword = HashPassword(password);
                 return entities.Users.First(x => x.Username == username && x.Password == password );
                 
             }
@@ -102,16 +101,10 @@ namespace MovieTracker
         }
         public List<Movie> GetUserMovies(decimal userID) //Used for data grid display
         {
-            var userMovies = entities.UserMovies1.Where(um => um.UserID == userID).ToList(); //where the entities User ID in the UserMovies table match with the current User ID, convert to list
-            List<Movie> moviesForUser = new List<Movie>(); //create a list of movies
-            foreach (var userMovie in userMovies) //foreach movie in the UserMovies table with the User's ID
-            {
-                var movie = entities.Movies.FirstOrDefault(m => m.MovieID == userMovie.MovieID); //returns the movie if the movie ID in the Movie table matches the movie ID in the UserMovie table
-                if (movie != null) //if the movie is returned
-                {
-                    moviesForUser.Add(movie); //add the movie to the list
-                }
-            }
+            var moviesForUser = (from um in entities.UserMovies1
+                                 join m in entities.Movies on um.MovieID equals m.MovieID
+                                 where um.UserID == userID
+                                 select m).ToList();
             return moviesForUser; //return list for data grid display
         }
         public void DeleteMovie(UserMovies movie, Movie movieToDelete, decimal loggedInUserID)
