@@ -32,6 +32,7 @@ namespace MovieTracker
     private void Form1_Load(object sender, EventArgs e)
         {
             userRepository = new UserRepository();
+            btnHide.Visible = false;
         }
 
         private void btnCreateAcc_Click_1(object sender, EventArgs e)
@@ -66,5 +67,18 @@ namespace MovieTracker
 
         }
 
+        private void btnHide_Click(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
+            btnHide.Visible = false;
+            btnPeek.Visible = true;
+        }
+
+        private void btnPeek_Click(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = false;
+            btnPeek.Visible = false;
+            btnHide.Visible = true;
+        }
     }
 }

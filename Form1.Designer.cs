@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnLogin = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnCreateAcc = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnPeek = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnHide = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // txtUsername
@@ -41,7 +44,7 @@
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(387, 171);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(109, 26);
+            this.txtUsername.Size = new System.Drawing.Size(149, 26);
             this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
@@ -49,7 +52,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(387, 221);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(109, 26);
+            this.txtPassword.Size = new System.Drawing.Size(149, 26);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
@@ -106,11 +109,43 @@
             this.btnCreateAcc.UseVisualStyleBackColor = true;
             this.btnCreateAcc.Click += new System.EventHandler(this.btnCreateAcc_Click_1);
             // 
+            // btnPeek
+            // 
+            this.btnPeek.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnPeek.Depth = 0;
+            this.btnPeek.Icon = ((System.Drawing.Image)(resources.GetObject("btnPeek.Icon")));
+            this.btnPeek.Location = new System.Drawing.Point(543, 217);
+            this.btnPeek.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnPeek.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnPeek.Name = "btnPeek";
+            this.btnPeek.Primary = false;
+            this.btnPeek.Size = new System.Drawing.Size(45, 36);
+            this.btnPeek.TabIndex = 8;
+            this.btnPeek.UseVisualStyleBackColor = true;
+            this.btnPeek.Click += new System.EventHandler(this.btnPeek_Click);
+            // 
+            // btnHide
+            // 
+            this.btnHide.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnHide.Depth = 0;
+            this.btnHide.Icon = ((System.Drawing.Image)(resources.GetObject("btnHide.Icon")));
+            this.btnHide.Location = new System.Drawing.Point(543, 217);
+            this.btnHide.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnHide.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnHide.Name = "btnHide";
+            this.btnHide.Primary = false;
+            this.btnHide.Size = new System.Drawing.Size(45, 36);
+            this.btnHide.TabIndex = 9;
+            this.btnHide.UseVisualStyleBackColor = true;
+            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnHide);
+            this.Controls.Add(this.btnPeek);
             this.Controls.Add(this.btnCreateAcc);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lblPassword);
@@ -132,6 +167,8 @@
         private System.Windows.Forms.Label lblPassword;
         private MaterialSkin.Controls.MaterialRaisedButton btnLogin;
         private MaterialSkin.Controls.MaterialFlatButton btnCreateAcc;
+        private MaterialSkin.Controls.MaterialFlatButton btnPeek;
+        private MaterialSkin.Controls.MaterialFlatButton btnHide;
     }
 }
 
