@@ -164,6 +164,7 @@
             this.Controls.Add(this.dataGridViewMovies);
             this.Name = "MainPage";
             this.Text = "MainPage";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainPage_FormClosing);
             this.Load += new System.EventHandler(this.MainPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovies)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSearch)).EndInit();

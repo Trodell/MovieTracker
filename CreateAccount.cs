@@ -50,7 +50,7 @@ namespace MovieTracker
                 newUser.UserID = userRepository.GetMaxUserID() + 1;
                 userRepository.CreateUser(newUser);
                 MessageBox.Show("Account Created!");
-                this.Hide();
+                this.Close();
                 Login login = new Login();
                 login.Show();
             }
@@ -61,7 +61,7 @@ namespace MovieTracker
         private void btnLogin_Click(object sender, EventArgs e)
         {
             
-            this.Close();
+            Close();
             Login login = new Login();
             login.Show();
         }
@@ -80,7 +80,7 @@ namespace MovieTracker
 
         private void txtFName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.OemPeriod || e.KeyChar == (char)Keys.Decimal)
+            if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = true; // Mark the event as handled to stop the character from being processed
             }
@@ -88,7 +88,7 @@ namespace MovieTracker
 
         private void txtLName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.OemPeriod || e.KeyChar == (char)Keys.Decimal)
+            if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = true; // Mark the event as handled to stop the character from being processed
             }

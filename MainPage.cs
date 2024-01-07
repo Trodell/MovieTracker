@@ -155,5 +155,10 @@ namespace MovieTracker
             Login login = new Login();
             login.Show();
         }
+
+        private void MainPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
     }
 }
