@@ -41,19 +41,29 @@ namespace MovieTracker
             if (txtFName.Text != "" && txtLName.Text != "" && txtAge.Text != "" && txtEmail.Text != "" && txtCreateUsername.Text != "" && txtCreatePassword.Text != "")
             {
 
-                var newUser = new User();
-                newUser.First_Name = txtFName.Text;
-                newUser.Last_Name = txtLName.Text;
-                newUser.Age = decimal.Parse(txtAge.Text);
-                newUser.Email = txtEmail.Text;
-                newUser.Username = txtCreateUsername.Text;
-                newUser.Password = userRepository.HashPassword(txtCreatePassword.Text);
-                newUser.UserID = userRepository.GetMaxUserID() + 1;
-                userRepository.CreateUser(newUser);
-                MessageBox.Show("Account Created!");
-                this.Close();
-                Login login = new Login();
-                login.Show();
+                if (userRepository.FindUser(txtCreateUsername.Text) == null)
+                {
+                    var newUser = new User();
+                    newUser.First_Name = txtFName.Text;
+                    newUser.Last_Name = txtLName.Text;
+                    newUser.Age = decimal.Parse(txtAge.Text);
+                    newUser.Email = txtEmail.Text;
+                    newUser.Username = txtCreateUsername.Text;
+                    newUser.Password = userRepository.HashPassword(txtCreatePassword.Text);
+                    newUser.UserID = userRepository.GetMaxUserID() + 1;
+                    userRepository.CreateUser(newUser);
+                    MessageBox.Show("Account Created!");
+                    this.Close();
+                    Login login = new Login();
+                    login.StartPosition = FormStartPosition.CenterScreen;
+                    login.Show();
+                }
+                else
+                {
+                    MessageBox.Show("That Username is already in use.");
+                    txtCreateUsername.Clear();
+                }
+                    
             }
             else
                 MessageBox.Show("Please enter all information correctly");
@@ -63,9 +73,11 @@ namespace MovieTracker
         {
             
 
-            Close();
+            
             Login login = new Login();
+            login.StartPosition = FormStartPosition.CenterScreen;
             login.Show();
+            Close();
         }
 
         private void txtAge_Validating(object sender, CancelEventArgs e)
@@ -132,6 +144,11 @@ namespace MovieTracker
                 e.Cancel = true;
                 lblPasswordWarning.Visible = true;
             }
+        }
+
+        private void lblAgeWarning_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -46,6 +46,7 @@
             this.moviesGrid.Name = "moviesGrid";
             this.moviesGrid.Size = new System.Drawing.Size(620, 221);
             this.moviesGrid.TabIndex = 0;
+            this.moviesGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.moviesGrid_CellContentClick);
             // 
             // btnDelete
             // 
@@ -81,7 +82,7 @@
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.Location = new System.Drawing.Point(358, 96);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(100, 26);
+            this.txtTitle.Size = new System.Drawing.Size(149, 26);
             this.txtTitle.TabIndex = 4;
             this.txtTitle.TextChanged += new System.EventHandler(this.txtTitle_TextChanged);
             // 

@@ -41,6 +41,7 @@ namespace MovieTracker
             moviesGrid.Columns[1].Width = 65;
             moviesGrid.Columns[3].Visible = false; //Id
             moviesGrid.Columns[4].Visible = false; //??
+
         }
 
         private void btnDelete_Click_1(object sender, EventArgs e)
@@ -75,7 +76,13 @@ namespace MovieTracker
         {
             Close();
             MainPage mainPage = new MainPage();
+            mainPage.StartPosition = FormStartPosition.CenterScreen;
             mainPage.Show();
+        }
+
+        private void moviesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

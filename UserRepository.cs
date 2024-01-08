@@ -23,6 +23,7 @@ namespace MovieTracker
         UserMovies GetMovieID(decimal movieID);
         bool VerifyPassword(string enteredPassword, string storedHashedPassword);
         string HashPassword(string password);
+        User FindUser(string username);
     }
     class UserRepository : CRUD
     {
@@ -43,6 +44,18 @@ namespace MovieTracker
             {
                 return entities.Users.First(x => x.Username == username && x.Password == password );
                 
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public User FindUser(string username) //overloading
+        {
+            try
+            {
+                return entities.Users.First(x => x.Username == username);
+
             }
             catch (Exception ex)
             {

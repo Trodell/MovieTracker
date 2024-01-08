@@ -60,7 +60,7 @@ namespace MovieTracker
             dataGridViewMovies.Columns[5].Width = 297;
             dataGridViewMovies.Columns[6].Width = 58;
             dataGridViewMovies.Columns[8].Width = 65;
-
+            
         }
         private async void txtTitle_TextChanged(object sender, EventArgs e)
         {
@@ -107,7 +107,7 @@ namespace MovieTracker
         private void dataGridViewMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
-            
+
         }
 
         private void btnAdd_Click_1(object sender, EventArgs e)
@@ -139,10 +139,12 @@ namespace MovieTracker
 
         private void btnList_Click_1(object sender, EventArgs e)
         {
-            Close();
-            UserMovieList userMovieList = new UserMovieList();
-            userMovieList.Show();
             
+            UserMovieList userMovieList = new UserMovieList();
+            userMovieList.StartPosition = FormStartPosition.CenterScreen;
+            userMovieList.Show();
+            Close();
+
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
@@ -152,9 +154,12 @@ namespace MovieTracker
 
         private void btnLoginPage_Click(object sender, EventArgs e)
         {
-            Close();
+            
+
             Login login = new Login();
+            login.StartPosition = FormStartPosition.CenterScreen;
             login.Show();
+            Close();
         }
 
         private void MainPage_FormClosing(object sender, FormClosingEventArgs e)

@@ -52,7 +52,7 @@
             this.txtFName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFName.Location = new System.Drawing.Point(380, 93);
             this.txtFName.Name = "txtFName";
-            this.txtFName.Size = new System.Drawing.Size(100, 26);
+            this.txtFName.Size = new System.Drawing.Size(149, 26);
             this.txtFName.TabIndex = 0;
             this.txtFName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFName_KeyPress);
             // 
@@ -61,7 +61,7 @@
             this.txtLName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLName.Location = new System.Drawing.Point(380, 141);
             this.txtLName.Name = "txtLName";
-            this.txtLName.Size = new System.Drawing.Size(100, 26);
+            this.txtLName.Size = new System.Drawing.Size(149, 26);
             this.txtLName.TabIndex = 1;
             this.txtLName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLName_KeyPress);
             // 
@@ -70,7 +70,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(380, 231);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(100, 26);
+            this.txtEmail.Size = new System.Drawing.Size(149, 26);
             this.txtEmail.TabIndex = 3;
             this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
@@ -79,7 +79,7 @@
             this.txtCreateUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCreateUsername.Location = new System.Drawing.Point(380, 280);
             this.txtCreateUsername.Name = "txtCreateUsername";
-            this.txtCreateUsername.Size = new System.Drawing.Size(100, 26);
+            this.txtCreateUsername.Size = new System.Drawing.Size(149, 26);
             this.txtCreateUsername.TabIndex = 4;
             // 
             // txtCreatePassword
@@ -87,7 +87,7 @@
             this.txtCreatePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCreatePassword.Location = new System.Drawing.Point(380, 331);
             this.txtCreatePassword.Name = "txtCreatePassword";
-            this.txtCreatePassword.Size = new System.Drawing.Size(100, 26);
+            this.txtCreatePassword.Size = new System.Drawing.Size(149, 26);
             this.txtCreatePassword.TabIndex = 5;
             this.txtCreatePassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtCreatePassword_Validating);
             // 
@@ -96,7 +96,7 @@
             this.txtAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAge.Location = new System.Drawing.Point(380, 186);
             this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(33, 26);
+            this.txtAge.Size = new System.Drawing.Size(40, 26);
             this.txtAge.TabIndex = 2;
             this.txtAge.Validating += new System.ComponentModel.CancelEventHandler(this.txtAge_Validating);
             // 
@@ -215,27 +215,28 @@
             // 
             this.lblAgeWarning.AutoSize = true;
             this.lblAgeWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblAgeWarning.Location = new System.Drawing.Point(419, 194);
+            this.lblAgeWarning.Location = new System.Drawing.Point(426, 194);
             this.lblAgeWarning.Name = "lblAgeWarning";
-            this.lblAgeWarning.Size = new System.Drawing.Size(113, 13);
+            this.lblAgeWarning.Size = new System.Drawing.Size(131, 13);
             this.lblAgeWarning.TabIndex = 21;
-            this.lblAgeWarning.Text = "Please enter a number";
+            this.lblAgeWarning.Text = "Please enter a number 0-9";
+            this.lblAgeWarning.Click += new System.EventHandler(this.lblAgeWarning_Click);
             // 
             // lblEmailWarning
             // 
             this.lblEmailWarning.AutoSize = true;
             this.lblEmailWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblEmailWarning.Location = new System.Drawing.Point(486, 239);
+            this.lblEmailWarning.Location = new System.Drawing.Point(535, 239);
             this.lblEmailWarning.Name = "lblEmailWarning";
-            this.lblEmailWarning.Size = new System.Drawing.Size(93, 13);
+            this.lblEmailWarning.Size = new System.Drawing.Size(127, 13);
             this.lblEmailWarning.TabIndex = 22;
-            this.lblEmailWarning.Text = "Please enter email";
+            this.lblEmailWarning.Text = "Please enter a valid email";
             // 
             // lblPasswordWarning
             // 
             this.lblPasswordWarning.AutoSize = true;
             this.lblPasswordWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblPasswordWarning.Location = new System.Drawing.Point(486, 331);
+            this.lblPasswordWarning.Location = new System.Drawing.Point(535, 331);
             this.lblPasswordWarning.Name = "lblPasswordWarning";
             this.lblPasswordWarning.Size = new System.Drawing.Size(159, 39);
             this.lblPasswordWarning.TabIndex = 23;

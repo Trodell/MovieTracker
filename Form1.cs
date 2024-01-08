@@ -25,7 +25,7 @@ namespace MovieTracker
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-        
+
 
         }
 
@@ -37,10 +37,12 @@ namespace MovieTracker
 
         private void btnCreateAcc_Click_1(object sender, EventArgs e)
         {
-            this.Hide(); //
-            CreateAccount createAccount = new CreateAccount();
-            createAccount.Show();
             
+            CreateAccount createAccount = new CreateAccount();
+            createAccount.StartPosition = FormStartPosition.CenterScreen;
+            createAccount.Show();
+            this.Hide(); //
+
         }
         
         private void btnLogin_Click_1(object sender, EventArgs e)
@@ -55,9 +57,11 @@ namespace MovieTracker
                 bool passwordMatch = userRepository.VerifyPassword(txtPassword.Text,password);
                 if (passwordMatch)
                 {
-                    this.Hide();
+                    
                     MainPage newForm = new MainPage();
+                    newForm.StartPosition = FormStartPosition.CenterScreen;
                     newForm.Show();
+                    this.Hide();
                 }
                
             }
